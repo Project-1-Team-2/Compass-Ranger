@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+#myMap {
+  height: 30vh;
+  width: 100%;
+  border: 1px solid black;
+}
+
+h1 {
+  color: blue;
+}
+
+#svg {
+  height: 100%;
+  width: 100%;
+}
+
+svg g path {
+  transition: 0.3s all ease-in-out;
+}
+
+svg g path:hover {
+  fill: rgb(45, 185, 240);
+  cursor: pointer;
+  transition: 0.2s all ease;
+}
+
+.weather {
+  height: 20vh;
+  width: 100%;
+  border: 1px solid black;
+}
