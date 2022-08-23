@@ -8,6 +8,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  justify-content: center;
 }
 
 main {
@@ -15,7 +16,7 @@ main {
 }
 
 #myMap {
-  height: 30vh;
+  height: 60vh;
   width: 100%;
   border: 1px solid black;
 }
@@ -25,8 +26,11 @@ h1 {
 }
 
 #svg {
-  height: 100%;
-  width: 100%;
+  display: flex;
+  padding-left: 30%;
+  height: 80%;
+  width: 80%;
+  justify-content: center;
 }
 
 svg g path {
