@@ -19,6 +19,7 @@ main {
   height: 60vh;
   width: 100%;
   border: 1px solid black;
+  position: relative;
 }
 
 h1 {
@@ -47,4 +48,25 @@ svg g path:hover {
   height: 20vh;
   width: 100%;
   border: 1px solid black;
+}
+
+#video {
+  position: absolute;
+  z-index: 999;
+  bottom: 0;
+  right: 0;
+  opacity: 0.7;
+}
+
+#video:hover {
+  opacity: 1;
+}
+
+#video p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+#video:active {
+  opacity: 1;
 }
