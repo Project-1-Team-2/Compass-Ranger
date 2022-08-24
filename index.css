@@ -5,8 +5,8 @@
 }
 
 body {
+
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
 }
 
@@ -14,8 +14,12 @@ main {
   flex: 1 0 auto;
 }
 
+html {
+  font-family: 'Noto Serif HK', serif;
+}
+
 #myMap {
-  height: 30vh;
+  height: 400px;
   width: 100%;
   border: 1px solid black;
 }
@@ -40,7 +44,43 @@ svg g path:hover {
 }
 
 .weather {
-  height: 20vh;
+
+  height: 200px;
   width: 100%;
   border: 1px solid black;
+}
+
+.nav-wrapper {
+  background-color: darkgreen;
+
+
+}
+
+.page-footer {
+  display: flex;
+  height: 8%;
+  background-color: darkgreen;
+}
+
+.brand-logo {
+  margin-left: 1.5em;
+  font-family: 'Noto Serif HK', serif;
+}
+
+.card {
+  margin-right: 2em;
+}
+
+.collMenu {
+  width: 60%;
+}
+
+.slidePic {
+  height: 100px;
+  width: 40%;
+}
+
+.infoContainer {
+  display: flex;
+  flex-wrap: wrap;
 }
