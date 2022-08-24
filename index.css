@@ -6,7 +6,6 @@
 
 body {
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
   justify-content: center;
 }
@@ -15,8 +14,12 @@ main {
   flex: 1 0 auto;
 }
 
+html {
+  font-family: "Noto Serif HK", serif;
+}
+
 #myMap {
-  height: 60vh;
+  height: 400px;
   width: 100%;
   border: 1px solid black;
   position: relative;
@@ -45,28 +48,40 @@ svg g path:hover {
 }
 
 .weather {
-  height: 20vh;
+  height: 200px;
   width: 100%;
   border: 1px solid black;
 }
 
-#video {
-  position: absolute;
-  z-index: 999;
-  bottom: 0;
-  right: 0;
-  opacity: 0.7;
+.nav-wrapper {
+  background-color: darkgreen;
 }
 
-#video:hover {
-  opacity: 1;
+.page-footer {
+  display: flex;
+  height: 8%;
+  background-color: darkgreen;
 }
 
-#video p {
-  text-align: center;
-  font-weight: bold;
-  font-size: 16px;
+.brand-logo {
+  margin-left: 1.5em;
+  font-family: "Noto Serif HK", serif;
 }
-#video:active {
-  opacity: 1;
+
+.card {
+  margin-right: 2em;
+}
+
+.collMenu {
+  width: 60%;
+}
+
+.slidePic {
+  height: 100px;
+  width: 40%;
+}
+
+.infoContainer {
+  display: flex;
+  flex-wrap: wrap;
 }
