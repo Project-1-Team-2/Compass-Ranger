@@ -49,7 +49,7 @@ svg g path:hover {
 
 .weather {
   height: 200px;
-  width: 100%;
+  width: 50%;
   border: 1px solid black;
 }
 

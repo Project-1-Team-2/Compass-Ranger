@@ -98,7 +98,7 @@ function isISSnearBy() {
   let radiusLimitDeg = 250 / 69;
   let currentRadius = Math.sqrt(
     parseFloat(locationData.issLat - locationData.currentLat) ** 2 +
-      parseFloat((locationData.issLong - locationData.currentLong) ** 2)
+    parseFloat((locationData.issLong - locationData.currentLong) ** 2)
   );
 
   if (currentRadius <= radiusLimitDeg && !confirmed) {
