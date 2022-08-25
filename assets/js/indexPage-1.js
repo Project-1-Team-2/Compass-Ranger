@@ -104,8 +104,7 @@ let statesAbr = [
   "WI",
   "WY",
 ];
-console.log(states.indexOf("Rhode Island"));
-console.log(statesAbr[38]);
+
 paths.forEach((el, index) => {
   el.setAttribute("id", index);
 });

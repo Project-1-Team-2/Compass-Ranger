@@ -133,10 +133,13 @@ function getParks() {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       for (let i = 0; i < data.data.length; i++) {
         $(`#${i}`).removeClass(`hidden`);
         $(`#${i} h3`).text(`${data.data[i].fullName}, ${data.data[i].states}`);
+        $(`#${i} h3`)
+          .attr("data-lat", data.data[i].latitude)
+          .attr("data-long", data.data[i].longitude)
+          .attr("data-name", data.data[i].name);
         $(`#${i} .description`).text(`${data.data[i].description}`);
       }
     });
@@ -154,3 +157,28 @@ let interval = setInterval(() => {
 getGeolocation();
 getIssLocation();
 getParks();
+
+function getWeather(lat, long) {
+  return fetch(
+    `https://api.weatherapi.com/v1/forecast.json?key=a2cf3270f3154f0e89b161101222308&q=${lat},${long}&days=5&aqi=no`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      return data;
+    });
+}
+
+let parks = document.querySelectorAll(".parkContent h3");
+parks.forEach((el) => {
+  el.addEventListener("click", (e) => {
+    let latitudePark = e.target.dataset.lat;
+    let longitudePark = e.target.dataset.long;
+    getWeather(latitudePark, longitudePark).then((data) => {
+      let h3 = document.querySelector(".locationName");
+      h3.innerHTML = data.location.name;
+      $(".temperature").text(`Temperature: ${data.current.temp_f}F`);
+      // h3.innerHTML = data.data[0].name;
+    });
+  });
+});

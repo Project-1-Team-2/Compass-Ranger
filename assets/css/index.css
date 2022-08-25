@@ -174,3 +174,41 @@ nav img {
   opacity: 1;
   position: relative;
 }
+
+.weather-wrapper-1 {
+  display: flex;
+  height: 50%;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.weather-wrapper-2 {
+  display: flex;
+  height: 50%;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.forecastdata {
+  width: 20%;
+  height: 100%;
+  border: 1px solid black;
+}
+
+.mainweatherdata {
+  width: 35%;
+  height: 100%;
+  border: 1px solid black;
+}
+
+#icondata {
+  width: 30%;
+  height: 100%;
+  border: 1px solid black;
+}
+
+#additionaldata {
+  width: 35%;
+  height: 100%;
+  border: 1px solid black;
+}
