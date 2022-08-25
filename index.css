@@ -115,6 +115,16 @@ svg g path:hover {
 .infoContainer {
   display: flex;
   flex-wrap: wrap;
+<<<<<<< HEAD
+}
+
+.navbar-fixed {
+  position: relative;
+  z-index: 999999;
+}
+
+.hidden {
+  display: none;
 }
 
 .navbar-fixed {
