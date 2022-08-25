@@ -109,3 +109,7 @@ function isISSnearBy() {
 
 getGeolocation();
 getIssLocation();
+
+//  comment down Minga
+console.log("test github");
+//  comment up Minga
