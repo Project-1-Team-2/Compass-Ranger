@@ -56,13 +56,13 @@ svg g path:hover {
 }
 
 .parklist {
-  width: 60%;
+  width: 50%;
   height: 100%;
   border: 1px solid black;
 }
 
 .park {
-  width: 40%;
+  width: 50%;
   height: 100%;
   border: 1px solid black;
 }
