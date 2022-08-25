@@ -25,18 +25,46 @@
   </head>
 
   <body>
-    <nav>
-      <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Compass Ranger</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">My Favorites</a></li>
-        </ul>
-      </div>
-    </nav>
+    <div class="navbar-fixed">
+      <nav class="">
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo">Compass Ranger</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">My Favorites</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
     <div id="myMap"></div>
     <div class="content">
-      <div class="parklist"></div>
+      <div class="parklist">
+        <div class="parkContent hidden" id="0">
+          <h3 class="parkName">national park</h3>
+          <p class="description">This is imaginary national park</p>
+          <p class="hours">8:00 am - 10:00 pm</p>
+        </div>
+        <div class="parkContent hidden" id="1">
+          <h3 class="parkName">national park</h3>
+          <p class="description">This is imaginary national park</p>
+          <p class="hours">8:00 am - 10:00 pm</p>
+        </div>
+        <div class="parkContent hidden" id="2">
+          <h3 class="parkName">national park</h3>
+          <p class="description">This is imaginary national park</p>
+          <p class="hours">8:00 am - 10:00 pm</p>
+        </div>
+        <div class="parkContent hidden" id="3">
+          <h3 class="parkName">national park</h3>
+          <p class="description">This is imaginary national park</p>
+          <p class="hours">8:00 am - 10:00 pm</p>
+        </div>
+        <div class="parkContent hidden" id="4">
+          <h3 class="parkName">national park</h3>
+          <p class="description">This is imaginary national park</p>
+          <p class="hours">8:00 am - 10:00 pm</p>
+        </div>
+      </div>
       <div class="park">
         <div class="weather"></div>
         <div class="images"></div>
@@ -66,6 +94,12 @@
         </div>
       </footer>
     </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script
       src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"

@@ -111,4 +111,25 @@ getGeolocation();
 getIssLocation();
 
 // Getting Parks -------------------------->
-function getParks() {}
+
+function getParks() {
+  let queryString = document.location.search;
+  let state = queryString.split("?").filter((el) => el.length !== 0);
+  let stateCode = statesAbr[states.indexOf(state[0])];
+
+  fetch(
+    `https://developer.nps.gov/api/v1/parks?stateCode=${stateCode}&limit=10&api_key=pxrVjAGe1sTiPq6v7V9uFyScwJL6rhZb4dJig11J`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      for (let i = 0; i < data.data.length; i++) {
+        $(`#${i}`).removeClass(`hidden`);
+        $(`#${i} h3`).text(`${data.data[i].fullName}, ${data.data[i].states}`);
+        $(`#${i} .description`).text(`${data.data[i].description}`);
+        $(`#${i} .hours`).text(`${data.data[i].weatherInfo}`);
+      }
+    });
+}
+
+getParks();

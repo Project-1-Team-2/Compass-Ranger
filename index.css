@@ -52,17 +52,17 @@ svg g path:hover {
   width: 100%;
   flex-wrap: wrap;
   border: 1px solid black;
-  height: 57vh;
+  height: 80vh;
 }
 
 .parklist {
-  width: 50%;
+  width: 60%;
   height: 100%;
   border: 1px solid black;
 }
 
 .park {
-  width: 50%;
+  width: 40%;
   height: 100%;
   border: 1px solid black;
 }
@@ -110,4 +110,17 @@ svg g path:hover {
 .infoContainer {
   display: flex;
   flex-wrap: wrap;
+}
+
+.navbar-fixed {
+  position: relative;
+  z-index: 999999;
+}
+
+.hidden {
+  display: none;
+}
+
+.parkContent {
+  border: 1px solid black;
 }
