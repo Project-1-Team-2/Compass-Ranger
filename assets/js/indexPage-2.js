@@ -144,7 +144,9 @@ function getParks() {
       }
     });
 }
-
+getParks();
+getGeolocation();
+getIssLocation();
 // Updating ISS Location in the Map and checking if it is within 250 miles vicinity of current location
 
 let interval = setInterval(() => {
@@ -153,10 +155,6 @@ let interval = setInterval(() => {
 }, 2000);
 
 // Calling functions ------------>
-
-getGeolocation();
-getIssLocation();
-getParks();
 
 function getWeather(lat, long) {
   return fetch(
@@ -175,7 +173,7 @@ parks.forEach((el) => {
     let latitudePark = e.target.dataset.lat;
     let longitudePark = e.target.dataset.long;
     getWeather(latitudePark, longitudePark).then((data) => {
-      let h3 = document.querySelector(".locationName");
+      let h3 = document.querySelector("#locationName");
       h3.innerHTML = data.location.name;
 
       $(".temperature").text(`Temperature: ${data.current.temp_f}F`);
