@@ -84,7 +84,7 @@ let getIssLocation = () => {
       }).addTo(map);
       setInterval(() => {
         map.removeLayer(location);
-      }, 1500);
+      }, 2000);
     });
 };
 
@@ -92,7 +92,7 @@ let getIssLocation = () => {
 let interval = setInterval(() => {
   getIssLocation();
   isISSnearBy();
-}, 1500);
+}, 2000);
 
 function isISSnearBy() {
   let radiusLimitDeg = 250 / 69;
@@ -114,8 +114,16 @@ getIssLocation();
 
 function getParks() {
   let queryString = document.location.search;
-  let state = queryString.split("?").filter((el) => el.length !== 0);
-  let stateCode = statesAbr[states.indexOf(state[0])];
+  console.log(queryString);
+  let state = queryString.split(/[?%\d]/).filter((el) => el.length !== 0);
+  if (state.length > 1) {
+    state = `${state[0]} ${state[1]}`;
+  } else {
+    state = state[0];
+  }
+  console.log(state);
+  let stateCode = statesAbr[states.indexOf(state)];
+  console.log(stateCode);
 
   fetch(
     `https://developer.nps.gov/api/v1/parks?stateCode=${stateCode}&limit=10&api_key=pxrVjAGe1sTiPq6v7V9uFyScwJL6rhZb4dJig11J`
@@ -127,7 +135,6 @@ function getParks() {
         $(`#${i}`).removeClass(`hidden`);
         $(`#${i} h3`).text(`${data.data[i].fullName}, ${data.data[i].states}`);
         $(`#${i} .description`).text(`${data.data[i].description}`);
-        $(`#${i} .hours`).text(`${data.data[i].weatherInfo}`);
       }
     });
 }

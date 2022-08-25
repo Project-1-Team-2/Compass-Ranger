@@ -45,6 +45,7 @@ svg g path:hover {
   fill: rgb(45, 185, 240);
   cursor: pointer;
   transition: 0.2s all ease;
+  transform: scale(1.006);
 }
 
 .content {
@@ -52,13 +53,17 @@ svg g path:hover {
   width: 100%;
   flex-wrap: wrap;
   border: 1px solid black;
-  height: 80vh;
+  height: 600px;
+  margin-bottom: 5px;
 }
 
 .parklist {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 60%;
-  height: 100%;
   border: 1px solid black;
+  align-items: center;
 }
 
 .park {
@@ -122,5 +127,26 @@ svg g path:hover {
 }
 
 .parkContent {
-  border: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 2px 7px;
+}
+
+.parkName {
+  margin-top: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.description {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.info {
+  font-size: 12px;
+}
+
+.parkContent:nth-of-type(1) {
+  margin-top: 1.5%;
 }
