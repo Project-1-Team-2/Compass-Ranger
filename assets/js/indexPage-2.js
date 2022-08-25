@@ -177,7 +177,9 @@ parks.forEach((el) => {
     getWeather(latitudePark, longitudePark).then((data) => {
       let h3 = document.querySelector(".locationName");
       h3.innerHTML = data.location.name;
+
       $(".temperature").text(`Temperature: ${data.current.temp_f}F`);
+
       // h3.innerHTML = data.data[0].name;
     });
   });
