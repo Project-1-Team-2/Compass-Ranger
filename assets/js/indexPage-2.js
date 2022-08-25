@@ -32,7 +32,7 @@ L.control.scale().addTo(map);
 // Adding Icon
 
 const myIcon = L.icon({
-  iconUrl: "iss.png",
+  iconUrl: "./assets/icon/iss.png",
   iconSize: [38, 95],
 });
 
