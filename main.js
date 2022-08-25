@@ -109,3 +109,6 @@ function isISSnearBy() {
 
 getGeolocation();
 getIssLocation();
+
+// Getting Parks -------------------------->
+function getParks() {}

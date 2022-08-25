@@ -19,7 +19,7 @@ html {
 }
 
 #myMap {
-  height: 400px;
+  height: 30vh;
   width: 100%;
   border: 1px solid black;
   position: relative;
@@ -47,9 +47,35 @@ svg g path:hover {
   transition: 0.2s all ease;
 }
 
-.weather {
-  height: 200px;
+.content {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  height: 57vh;
+}
+
+.parklist {
   width: 50%;
+  height: 100%;
+  border: 1px solid black;
+}
+
+.park {
+  width: 50%;
+  height: 100%;
+  border: 1px solid black;
+}
+
+.weather {
+  height: 40%;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.images {
+  height: 60%;
+  width: 100%;
   border: 1px solid black;
 }
 
@@ -59,7 +85,7 @@ svg g path:hover {
 
 .page-footer {
   display: flex;
-  height: 8%;
+  height: 6vh;
   background-color: darkgreen;
 }
 
