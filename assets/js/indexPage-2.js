@@ -1,5 +1,111 @@
-// ---------------------> Storing all lat/long for ISS & Current Location
+let states2 = [
+  "Alabama",
+  "Alaska",
+  "Arizona",
+  "Arkansas",
+  "California",
+  "Colorado",
+  "Connecticut",
+  "Delaware",
+  "Florida",
+  "Georgia",
+  "Hawaii",
+  "Idaho",
+  "Illinois",
+  "Indiana",
+  "Iowa",
+  "Kansas",
+  "Kentucky",
+  "Louisiana",
+  "Maine",
+  "Maryland",
+  "Massachusetts",
+  "Michigan",
+  "Minnesota",
+  "Mississippi",
+  "Missouri",
+  "Montana",
+  "Nebraska",
+  "Nevada",
+  "New Hampshire",
+  "New Jersey",
+  "New Mexico",
+  "New York",
+  "North Carolina",
+  "North Dakota",
+  "Ohio",
+  "Oklahoma",
+  "Oregon",
+  "Pennsylvania",
+  "Rhode Island",
+  "South Carolina",
+  "South Dakota",
+  "Tennessee",
+  "Texas",
+  "Utah",
+  "Vermont",
+  "Virginia",
+  "Washington",
+  "West Virginia",
+  "Wisconsin",
+  "Wyoming",
+];
 
+let statesAbr2 = [
+  "AL",
+  "AK",
+  "AZ",
+  "AR",
+  "CA",
+  "CO",
+  "CT",
+  "DE",
+  "FL",
+  "GA",
+  "HI",
+  "ID",
+  "IL",
+  "IN",
+  "IA",
+  "KS",
+  "KY",
+  "LA",
+  "ME",
+  "MD",
+  "MA",
+  "MI",
+  "MN",
+  "MS",
+  "MO",
+  "MT",
+  "NE",
+  "NV",
+  "NH",
+  "NJ",
+  "NM",
+  "NY",
+  "NC",
+  "ND",
+  "OH",
+  "OK",
+  "OR",
+  "PA",
+  "RI",
+  "SC",
+  "SD",
+  "TN",
+  "TX",
+  "UT",
+  "VT",
+  "VA",
+  "WA",
+  "WV",
+  "WI",
+  "WY",
+];
+
+// ---------------------> Storing all lat/long for ISS & Current Location
+let images = [[], [], [], [], []];
 let locationData = {
   issLat: "",
   issLong: "",
@@ -7,9 +113,9 @@ let locationData = {
   currentLong: "",
 };
 let index = 0;
-
-let images = [[], [], [], [], []];
-
+let intervalPic;
+let parks = document.querySelectorAll(".parkContent h3");
+let theMarker = null;
 let confirmed = false; // -------------------> Controlling alert notification
 
 // Creating Map
@@ -119,20 +225,19 @@ function isISSnearBy() {
 // Getting Parks -------------------------->
 
 function getParks() {
+  $(".images img").attr("src", "./assets/images/background.jpg");
   let queryString = document.location.search;
-  console.log(queryString);
   let state = queryString.split(/[?%\d]/).filter((el) => el.length !== 0);
   if (state.length > 1) {
     state = `${state[0]} ${state[1]}`;
   } else {
     state = state[0];
   }
-  console.log(state);
-  let stateCode = statesAbr[states.indexOf(state)];
-  console.log(stateCode);
+
+  let stateCode = statesAbr2[states2.indexOf(state)];
 
   fetch(
-    `https://developer.nps.gov/api/v1/parks?stateCode=${stateCode}&limit=10&api_key=pxrVjAGe1sTiPq6v7V9uFyScwJL6rhZb4dJig11J`
+    `https://developer.nps.gov/api/v1/parks?stateCode=${stateCode}&limit=5&api_key=pxrVjAGe1sTiPq6v7V9uFyScwJL6rhZb4dJig11J`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -152,15 +257,6 @@ function getParks() {
       }
     });
 }
-getParks();
-getGeolocation();
-getIssLocation();
-// Updating ISS Location in the Map and checking if it is within 250 miles vicinity of current location
-
-let interval = setInterval(() => {
-  getIssLocation();
-  isISSnearBy();
-}, 2000);
 
 // Calling functions ------------>
 
@@ -174,12 +270,11 @@ function getWeather(lat, long) {
       return data;
     });
 }
-let intervalPic;
-let parks = document.querySelectorAll(".parkContent h3");
-let theMarker = null;
+
 parks.forEach((el) => {
   el.addEventListener("click", (e) => {
     clearInterval(intervalPic);
+    $(".images img").attr("src", images[e.target.dataset.value][4]);
     intervalPic = setInterval(() => {
       $(".images img").attr("src", images[e.target.dataset.value][index]);
       index++;
@@ -206,3 +301,14 @@ parks.forEach((el) => {
     });
   });
 });
+
+// Updating ISS Location in the Map and checking if it is within 250 miles vicinity of current location
+
+let interval = setInterval(() => {
+  getIssLocation();
+  isISSnearBy();
+}, 2000);
+
+getParks();
+getGeolocation();
+getIssLocation();
