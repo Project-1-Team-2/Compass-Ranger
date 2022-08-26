@@ -223,3 +223,16 @@ nav img {
   transition: 0.3s all ease-in-out;
   object-fit: cover;
 }
+
+
+.favBtn {
+  background-color: goldenrod;
+  border-radius: 1px;
+  margin: 2px;
+  padding: 2px;
+}
+
+/* 
+.myFavorites {
+  ;
+} */
