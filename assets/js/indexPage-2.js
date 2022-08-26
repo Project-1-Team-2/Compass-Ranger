@@ -1,109 +1,3 @@
-let states2 = [
-  "Alabama",
-  "Alaska",
-  "Arizona",
-  "Arkansas",
-  "California",
-  "Colorado",
-  "Connecticut",
-  "Delaware",
-  "Florida",
-  "Georgia",
-  "Hawaii",
-  "Idaho",
-  "Illinois",
-  "Indiana",
-  "Iowa",
-  "Kansas",
-  "Kentucky",
-  "Louisiana",
-  "Maine",
-  "Maryland",
-  "Massachusetts",
-  "Michigan",
-  "Minnesota",
-  "Mississippi",
-  "Missouri",
-  "Montana",
-  "Nebraska",
-  "Nevada",
-  "New Hampshire",
-  "New Jersey",
-  "New Mexico",
-  "New York",
-  "North Carolina",
-  "North Dakota",
-  "Ohio",
-  "Oklahoma",
-  "Oregon",
-  "Pennsylvania",
-  "Rhode Island",
-  "South Carolina",
-  "South Dakota",
-  "Tennessee",
-  "Texas",
-  "Utah",
-  "Vermont",
-  "Virginia",
-  "Washington",
-  "West Virginia",
-  "Wisconsin",
-  "Wyoming",
-];
-
-let statesAbr2 = [
-  "AL",
-  "AK",
-  "AZ",
-  "AR",
-  "CA",
-  "CO",
-  "CT",
-  "DE",
-  "FL",
-  "GA",
-  "HI",
-  "ID",
-  "IL",
-  "IN",
-  "IA",
-  "KS",
-  "KY",
-  "LA",
-  "ME",
-  "MD",
-  "MA",
-  "MI",
-  "MN",
-  "MS",
-  "MO",
-  "MT",
-  "NE",
-  "NV",
-  "NH",
-  "NJ",
-  "NM",
-  "NY",
-  "NC",
-  "ND",
-  "OH",
-  "OK",
-  "OR",
-  "PA",
-  "RI",
-  "SC",
-  "SD",
-  "TN",
-  "TX",
-  "UT",
-  "VT",
-  "VA",
-  "WA",
-  "WV",
-  "WI",
-  "WY",
-];
-
 // ---------------------> Storing all lat/long for ISS & Current Location
 let images = [[], [], [], [], []];
 let locationData = {
@@ -234,7 +128,7 @@ function getParks() {
     state = state[0];
   }
 
-  let stateCode = statesAbr2[states2.indexOf(state)];
+  let stateCode = statesAbr[states.indexOf(state)];
 
   fetch(
     `https://developer.nps.gov/api/v1/parks?stateCode=${stateCode}&limit=5&api_key=pxrVjAGe1sTiPq6v7V9uFyScwJL6rhZb4dJig11J`
@@ -250,10 +144,6 @@ function getParks() {
           .attr("data-long", data.data[i].longitude)
           .attr("data-name", data.data[i].name);
         $(`#${i} .description`).text(`${data.data[i].description}`);
-
-        for (j = 0; j < data.data[i].images.length; j++) {
-          images[i].push(data.data[i].images[j].url);
-        }
       }
     });
 }
@@ -269,6 +159,12 @@ function getWeather(lat, long) {
       console.log(data);
       return data;
     });
+}
+
+function getImages() {
+  for (j = 0; j < data.data[i].images.length; j++) {
+    images[i].push(data.data[i].images[j].url);
+  }
 }
 
 parks.forEach((el) => {
