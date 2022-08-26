@@ -119,6 +119,7 @@ function isISSnearBy() {
 // Getting Parks -------------------------->
 
 function getParks() {
+  $(".images img").attr("src", "./assets/background/background.jpg");
   let queryString = document.location.search;
   console.log(queryString);
   let state = queryString.split(/[?%\d]/).filter((el) => el.length !== 0);
