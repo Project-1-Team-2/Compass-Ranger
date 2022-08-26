@@ -183,7 +183,7 @@ parks.forEach((el) => {
       $("#icondata img").attr("src", data.current.condition.icon);
       $("#temperature").text(`Temp: ${data.current.temp_f}F`);
       $("#humidity").text(`humidity: ${data.current.humidity}`);
-      $("#wind__direction").text(`wind-dir: ${data.current.wind_dir}`);
+      $("#wind__direction").text(`wind: ${data.current.wind_dir}`);
       $("#precipitations").text(`prec: ${data.current.precip_in}`);
 
       /* <------- weather-wrapper-2 info -------> */
@@ -192,7 +192,7 @@ parks.forEach((el) => {
         $(`#f${idx} .forecastdate`).text(`${el.date}`);
         $(`#f${idx} .forecasticon img`).attr("src", el.day.condition.icon);
         $(`#f${idx} .forecasttemp`).text(`Temp: ${el.day.maxtemp_f}°F`);
-        $(`#f${idx} .forecastwind`).text(`Wind: ${el.hour[0].wind_mph}`);
+        $(`#f${idx} .forecastwind`).text(`Wind: ${el.day.maxwind_mph}`);
         $(`#f${idx} .forecastprecip`).text(`${el.day.totalprecip_in}`);
       });
     });
