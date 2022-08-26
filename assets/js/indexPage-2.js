@@ -117,22 +117,20 @@ function isISSnearBy() {
 
 function getParks() {
   let queryString = document.location.search;
-  console.log(queryString);
   let state = queryString.split(/[?%\d]/).filter((el) => el.length !== 0);
   if (state.length > 1) {
     state = `${state[0]} ${state[1]}`;
   } else {
     state = state[0];
   }
-  console.log(state);
   let stateCode = statesAbr[states.indexOf(state)];
-  console.log(stateCode);
 
   fetch(
     `https://developer.nps.gov/api/v1/parks?stateCode=${stateCode}&limit=10&api_key=pxrVjAGe1sTiPq6v7V9uFyScwJL6rhZb4dJig11J`
   )
     .then((response) => response.json())
     .then((data) => {
+      displayWeather(locationData.currentLat, locationData.currentLong);
       for (let i = 0; i < data.data.length; i++) {
         $(`#${i}`).removeClass(`hidden`);
         $(`#${i} h3`).text(`${data.data[i].fullName}, ${data.data[i].states}`);
@@ -172,29 +170,30 @@ parks.forEach((el) => {
   el.addEventListener("click", (e) => {
     let latitudePark = e.target.dataset.lat;
     let longitudePark = e.target.dataset.long;
-    getWeather(latitudePark, longitudePark).then((data) => {
-      let h3 = document.querySelector("#locationName");
-      console.log(data.forecast.forecastday[0].astro.sunrise);
-      h3.innerHTML = data.location.name;
-
-      /* <------- weather-wrapper-1 info -------> */
-      $("#sunrise").text(`${data.forecast.forecastday[0].astro.sunrise}`);
-      $("#sunset").text(` ${data.forecast.forecastday[0].astro.sunset}`);
-      $("#icondata img").attr("src", data.current.condition.icon);
-      $("#temperature").text(`Temp: ${data.current.temp_f}F`);
-      $("#humidity").text(`humidity: ${data.current.humidity}`);
-      $("#wind__direction").text(`wind-dir: ${data.current.wind_dir}`);
-      $("#precipitations").text(`prec: ${data.current.precip_in}`);
-
-      /* <------- weather-wrapper-2 info -------> */
-      const forecastDays = data.forecast.forecastday;
-      forecastDays.forEach((el, idx) => {
-        $(`#f${idx} .forecastdate`).text(`${el.date}`);
-        $(`#f${idx} .forecasticon img`).attr("src", el.day.condition.icon);
-        $(`#f${idx} .forecasttemp`).text(`Temp: ${el.day.maxtemp_f}°F`);
-        $(`#f${idx} .forecastwind`).text(`Wind: ${el.hour[0].wind_mph}`);
-        $(`#f${idx} .forecastprecip`).text(`${el.day.totalprecip_in}`);
-      });
-    });
+    displayWeather(latitudePark, longitudePark);
   });
 });
+
+function displayWeather(lat, long) {
+  getWeather(lat, long).then((data) => {
+    /* <------- weather-wrapper-1 info -------> */
+    $("#locationName").text(data.location.name);
+    $("#sunrise").text(`${data.forecast.forecastday[0].astro.sunrise}`);
+    $("#sunset").text(` ${data.forecast.forecastday[0].astro.sunset}`);
+    $("#icondata img").attr("src", data.current.condition.icon);
+    $("#temperature").text(`Temp: ${data.current.temp_f}F`);
+    $("#humidity").text(`humidity: ${data.current.humidity}`);
+    $("#wind__direction").text(`wind-dir: ${data.current.wind_dir}`);
+    $("#precipitations").text(`prec: ${data.current.precip_in}`);
+
+    /* <------- weather-wrapper-2 info -------> */
+    const forecastDays = data.forecast.forecastday;
+    forecastDays.forEach((el, idx) => {
+      $(`#f${idx} .forecastdate`).text(`${el.date}`);
+      $(`#f${idx} .forecasticon img`).attr("src", el.day.condition.icon);
+      $(`#f${idx} .forecasttemp`).text(`Temp: ${el.day.maxtemp_f}°F`);
+      $(`#f${idx} .forecastwind`).text(`Wind: ${el.hour[0].wind_mph}`);
+      $(`#f${idx} .forecastprecip`).text(`${el.day.totalprecip_in}`);
+    });
+  });
+}
