@@ -186,22 +186,15 @@ parks.forEach((el) => {
       $("#wind__direction").text(`wind-dir: ${data.current.wind_dir}`);
       $("#precipitations").text(`prec: ${data.current.precip_in}`);
 
-      /* <------- weather-wrapper-2 forecast days -------> */
-
-      $("#forecastdate").text(`${data.forecast.forecastday[0].date}`);
-
-      $("#forecasticon img").attr(
-        "src",
-        data.forecast.forecastday[0].day.condition.icon
-      );
-      $("#forecasttemp").text(`${data.forecast.forecastday[0].day.maxtemp_f}`);
-      $("#forecastwind").text(
-        `${data.forecast.forecastday[0].hour[0].wind_mph}`
-      );
-      $("#forecastprecip").text(
-        `${data.forecast.forecastday[0].day.totalprecip_in}`
-      );
-      //
+      /* <------- weather-wrapper-2 info -------> */
+      const forecastDays = data.forecast.forecastday;
+      forecastDays.forEach((el, idx) => {
+        $(`#f${idx} .forecastdate`).text(`${el.date}`);
+        $(`#f${idx} .forecasticon img`).attr("src", el.day.condition.icon);
+        $(`#f${idx} .forecasttemp`).text(`Temp: ${el.day.maxtemp_f}°F`);
+        $(`#f${idx} .forecastwind`).text(`Wind: ${el.hour[0].wind_mph}`);
+        $(`#f${idx} .forecastprecip`).text(`${el.day.totalprecip_in}`);
+      });
     });
   });
 });
