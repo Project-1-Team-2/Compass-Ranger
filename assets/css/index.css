@@ -141,6 +141,7 @@ svg g path:hover {
 .parkContent {
   border-bottom: 1px solid black;
   padding: 2px 7px;
+  width: 100%;
 }
 
 .parkName {
@@ -211,4 +212,14 @@ nav img {
   width: 35%;
   height: 100%;
   border: 1px solid black;
+}
+
+.images img {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: bottom;
+  transition: 0.3s all ease-in-out;
+  object-fit: cover;
 }
