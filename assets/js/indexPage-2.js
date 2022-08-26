@@ -133,6 +133,7 @@ function getParks() {
   )
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       for (let i = 0; i < data.data.length; i++) {
         $(`#${i}`).removeClass(`hidden`);
         $(`#${i} h3`).text(`${data.data[i].fullName}, ${data.data[i].states}`);
@@ -168,12 +169,21 @@ function getWeather(lat, long) {
 }
 
 let parks = document.querySelectorAll(".parkContent h3");
+let theMarker = null;
 parks.forEach((el) => {
   el.addEventListener("click", (e) => {
     let latitudePark = e.target.dataset.lat;
     let longitudePark = e.target.dataset.long;
+
     getWeather(latitudePark, longitudePark).then((data) => {
       let h3 = document.querySelector("#locationName");
+      if (theMarker !== null) {
+        map.removeLayer(theMarker);
+      }
+      theMarker = L.marker([latitudePark, longitudePark])
+        .addTo(map)
+        .bindPopup(`${data.location.name}`);
+
       h3.innerHTML = data.location.name;
       $("#temperature").text(`Temperature: ${data.current.temp_f}F`);
       // h3.innerHTML = data.data[0].name;

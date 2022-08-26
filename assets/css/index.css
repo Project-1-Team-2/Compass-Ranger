@@ -141,6 +141,7 @@ svg g path:hover {
 .parkContent {
   border-bottom: 1px solid black;
   padding: 2px 7px;
+  width: 100%;
 }
 
 .parkName {
