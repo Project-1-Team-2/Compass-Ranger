@@ -6,6 +6,9 @@ let locationData = {
   currentLat: "",
   currentLong: "",
 };
+let index = 0;
+
+let images = [[], [], [], [], []];
 
 let confirmed = false; // -------------------> Controlling alert notification
 
@@ -134,7 +137,7 @@ function getParks() {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      for (let i = 0; i < data.data.length; i++) {
+      for (let i = 0; i < 5; i++) {
         $(`#${i}`).removeClass(`hidden`);
         $(`#${i} h3`).text(`${data.data[i].fullName}, ${data.data[i].states}`);
         $(`#${i} h3`)
@@ -142,6 +145,10 @@ function getParks() {
           .attr("data-long", data.data[i].longitude)
           .attr("data-name", data.data[i].name);
         $(`#${i} .description`).text(`${data.data[i].description}`);
+
+        for (j = 0; j < data.data[i].images.length; j++) {
+          images[i].push(data.data[i].images[j].url);
+        }
       }
     });
 }
@@ -167,11 +174,19 @@ function getWeather(lat, long) {
       return data;
     });
 }
-
+let intervalPic;
 let parks = document.querySelectorAll(".parkContent h3");
 let theMarker = null;
 parks.forEach((el) => {
   el.addEventListener("click", (e) => {
+    clearInterval(intervalPic);
+    intervalPic = setInterval(() => {
+      $(".images img").attr("src", images[e.target.dataset.value][index]);
+      index++;
+      if (index > 4) {
+        index = (index % 4) - 1;
+      }
+    }, 3000);
     let latitudePark = e.target.dataset.lat;
     let longitudePark = e.target.dataset.long;
 
@@ -186,6 +201,7 @@ parks.forEach((el) => {
 
       h3.innerHTML = data.location.name;
       $("#temperature").text(`Temperature: ${data.current.temp_f}F`);
+
       // h3.innerHTML = data.data[0].name;
     });
   });
