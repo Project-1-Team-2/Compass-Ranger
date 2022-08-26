@@ -174,11 +174,34 @@ parks.forEach((el) => {
     let longitudePark = e.target.dataset.long;
     getWeather(latitudePark, longitudePark).then((data) => {
       let h3 = document.querySelector("#locationName");
+      console.log(data.forecast.forecastday[0].astro.sunrise);
       h3.innerHTML = data.location.name;
 
-      $(".temperature").text(`Temperature: ${data.current.temp_f}F`);
+      /* <------- weather-wrapper-1 info -------> */
+      $("#sunrise").text(`${data.forecast.forecastday[0].astro.sunrise}`);
+      $("#sunset").text(` ${data.forecast.forecastday[0].astro.sunset}`);
+      $("#icondata img").attr("src", data.current.condition.icon);
+      $("#temperature").text(`Temp: ${data.current.temp_f}F`);
+      $("#humidity").text(`humidity: ${data.current.humidity}`);
+      $("#wind__direction").text(`wind-dir: ${data.current.wind_dir}`);
+      $("#precipitations").text(`prec: ${data.current.precip_in}`);
 
-      // h3.innerHTML = data.data[0].name;
+      /* <------- weather-wrapper-2 forecast days -------> */
+
+      $("#forecastdate").text(`${data.forecast.forecastday[0].date}`);
+
+      $("#forecasticon img").attr(
+        "src",
+        data.forecast.forecastday[0].day.condition.icon
+      );
+      $("#forecasttemp").text(`${data.forecast.forecastday[0].day.maxtemp_f}`);
+      $("#forecastwind").text(
+        `${data.forecast.forecastday[0].hour[0].wind_mph}`
+      );
+      $("#forecastprecip").text(
+        `${data.forecast.forecastday[0].day.totalprecip_in}`
+      );
+      //
     });
   });
 });
