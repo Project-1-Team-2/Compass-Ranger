@@ -214,6 +214,17 @@ function displayWeather(lat, long) {
       `Wind: ${data.current.wind_mph}mph / ${data.current.wind_dir}`
     );
     $("#precipitations").text(`Precipications: ${data.current.precip_in} in`);
+
+    /* <------- weather-wrapper-2 info -------> */
+    const forecastDays = data.forecast.forecastday;
+    forecastDays.forEach((el, idx) => {
+      console.log(data.forecast.forecastday);
+      $(`#f${idx} .forecastdate`).text(`${el.date}`);
+      $(`#f${idx} .forecasticon img`).attr("src", el.day.condition.icon);
+      $(`#f${idx} .forecasttemp`).text(`Temp: ${el.day.maxtemp_f}°F`);
+      $(`#f${idx} .forecastwind`).text(`Wind: ${el.day.maxwind_mph}mph`);
+      $(`#f${idx} .forecastprecip`).text(`Precip. ${el.day.totalprecip_in} in`);
+    });
   });
 }
 getParks();
