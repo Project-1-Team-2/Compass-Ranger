@@ -211,8 +211,8 @@ function displayWeather(lat, long) {
 
       // h3.innerHTML = data.data[0].name;
     });
-  });
-});
+  };
+
 
 // Updating ISS Location in the Map and checking if it is within 250 miles vicinity of current location
 
