@@ -147,6 +147,14 @@ function getParks() {
       }
     });
 }
+let interval = setInterval(() => {
+  getIssLocation();
+  isISSnearBy();
+}, 2000);
+
+getParks();
+getGeolocation();
+getIssLocation();
 
 // Calling functions ------------>
 
@@ -184,14 +192,15 @@ parks.forEach((el) => {
   });
 });
 
-    getWeather(latitudePark, longitudePark).then((data) => {
-      let h3 = document.querySelector("#locationName");
-      if (theMarker !== null) {
-        map.removeLayer(theMarker);
-      }
-      theMarker = L.marker([latitudePark, longitudePark])
-        .addTo(map)
-        .bindPopup(`${data.location.name}`);
+getWeather(latitudePark, longitudePark).then((data) => {
+  let h3 = document.querySelector("#locationName");
+  if (theMarker !== null) {
+    map.removeLayer(theMarker);
+  }
+  theMarker = L.marker([latitudePark, longitudePark])
+    .addTo(map)
+    .bindPopup(`${data.location.name}`);
+});
 
 function displayWeather(lat, long) {
   getWeather(lat, long).then((data) => {
@@ -209,18 +218,8 @@ function displayWeather(lat, long) {
     );
     $("#precipitations").text(`Precipications: ${data.current.precip_in} in`);
 
-      // h3.innerHTML = data.data[0].name;
-    });
-  };
-
+    // h3.innerHTML = data.data[0].name;
+  });
+}
 
 // Updating ISS Location in the Map and checking if it is within 250 miles vicinity of current location
-
-let interval = setInterval(() => {
-  getIssLocation();
-  isISSnearBy();
-}, 2000);
-
-getParks();
-getGeolocation();
-getIssLocation();
