@@ -1,12 +1,15 @@
 // ---------------------> Storing all lat/long for ISS & Current Location
-
+let images = [[], [], [], [], []];
 let locationData = {
   issLat: "",
   issLong: "",
   currentLat: "",
   currentLong: "",
 };
-
+let index = 0;
+let intervalPic;
+let parks = document.querySelectorAll(".parkContent h3");
+let theMarker = null;
 let confirmed = false; // -------------------> Controlling alert notification
 
 // Creating Map
@@ -116,6 +119,7 @@ function isISSnearBy() {
 // Getting Parks -------------------------->
 
 function getParks() {
+  $(".images img").attr("src", "./assets/images/background.jpg");
   let queryString = document.location.search;
   let state = queryString.split(/[?%\d]/).filter((el) => el.length !== 0);
   if (state.length > 1) {
@@ -123,10 +127,11 @@ function getParks() {
   } else {
     state = state[0];
   }
+
   let stateCode = statesAbr[states.indexOf(state)];
 
   fetch(
-    `https://developer.nps.gov/api/v1/parks?stateCode=${stateCode}&limit=10&api_key=pxrVjAGe1sTiPq6v7V9uFyScwJL6rhZb4dJig11J`
+    `https://developer.nps.gov/api/v1/parks?stateCode=${stateCode}&limit=5&api_key=pxrVjAGe1sTiPq6v7V9uFyScwJL6rhZb4dJig11J`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -142,15 +147,6 @@ function getParks() {
       }
     });
 }
-getParks();
-getGeolocation();
-getIssLocation();
-// Updating ISS Location in the Map and checking if it is within 250 miles vicinity of current location
-
-let interval = setInterval(() => {
-  getIssLocation();
-  isISSnearBy();
-}, 2000);
 
 // Calling functions ------------>
 
@@ -165,43 +161,37 @@ function getWeather(lat, long) {
     });
 }
 
-let parks = document.querySelectorAll(".parkContent h3");
+function getImages() {
+  for (j = 0; j < data.data[i].images.length; j++) {
+    images[i].push(data.data[i].images[j].url);
+  }
+}
+
 parks.forEach((el) => {
   el.addEventListener("click", (e) => {
+    clearInterval(intervalPic);
+    $(".images img").attr("src", images[e.target.dataset.value][4]);
+    intervalPic = setInterval(() => {
+      $(".images img").attr("src", images[e.target.dataset.value][index]);
+      index++;
+      if (index > 4) {
+        index = (index % 4) - 1;
+      }
+    }, 3000);
     let latitudePark = e.target.dataset.lat;
     let longitudePark = e.target.dataset.long;
     displayWeather(latitudePark, longitudePark);
   });
 });
 
-function displayWeather(lat, long) {
-  getWeather(lat, long).then((data) => {
-    /* <------- weather-wrapper-1 info -------> */
-    $("#locationName").text(`${data.location.name}, ${data.location.region}`);
-    $("#sunrise").text(
-      `Sunrise: ${data.forecast.forecastday[0].astro.sunrise}`
-    );
-    $("#sunset").text(`Sunset: ${data.forecast.forecastday[0].astro.sunset}`);
-    $("#icondata img").attr("src", data.current.condition.icon);
-    $("#temperature").text(`Temp: ${data.current.temp_f}F`);
-    $("#humidity").text(`Humidity: ${data.current.humidity}%`);
-    $("#wind__direction").text(
-      `Wind: ${data.current.wind_mph}mph / ${data.current.wind_dir}`
-    );
-    $("#precipitations").text(`Precipications: ${data.current.precip_in} in`);
-
-    /* <------- weather-wrapper-2 info -------> */
-    const forecastDays = data.forecast.forecastday;
-    forecastDays.forEach((el, idx) => {
-      console.log(data.forecast.forecastday);
-      $(`#f${idx} .forecastdate`).text(`${el.date}`);
-      $(`#f${idx} .forecasticon img`).attr("src", el.day.condition.icon);
-      $(`#f${idx} .forecasttemp`).text(`Temp: ${el.day.maxtemp_f}°F`);
-      $(`#f${idx} .forecastwind`).text(`Wind: ${el.day.maxwind_mph}mph`);
-      $(`#f${idx} .forecastprecip`).text(`Precip. ${el.day.totalprecip_in} in`);
-    });
-  });
-}
+    getWeather(latitudePark, longitudePark).then((data) => {
+      let h3 = document.querySelector("#locationName");
+      if (theMarker !== null) {
+        map.removeLayer(theMarker);
+      }
+      theMarker = L.marker([latitudePark, longitudePark])
+        .addTo(map)
+        .bindPopup(`${data.location.name}`);
 
 function displayWeather(lat, long) {
   getWeather(lat, long).then((data) => {
@@ -219,15 +209,18 @@ function displayWeather(lat, long) {
     );
     $("#precipitations").text(`Precipications: ${data.current.precip_in} in`);
 
-    /* <------- weather-wrapper-2 info -------> */
-    const forecastDays = data.forecast.forecastday;
-    forecastDays.forEach((el, idx) => {
-      console.log(data.forecast.forecastday);
-      $(`#f${idx} .forecastdate`).text(`${el.date}`);
-      $(`#f${idx} .forecasticon img`).attr("src", el.day.condition.icon);
-      $(`#f${idx} .forecasttemp`).text(`Temp: ${el.day.maxtemp_f}°F`);
-      $(`#f${idx} .forecastwind`).text(`Wind: ${el.day.maxwind_mph}mph`);
-      $(`#f${idx} .forecastprecip`).text(`Precip. ${el.day.totalprecip_in} in`);
+      // h3.innerHTML = data.data[0].name;
     });
   });
-}
+});
+
+// Updating ISS Location in the Map and checking if it is within 250 miles vicinity of current location
+
+let interval = setInterval(() => {
+  getIssLocation();
+  isISSnearBy();
+}, 2000);
+
+getParks();
+getGeolocation();
+getIssLocation();
