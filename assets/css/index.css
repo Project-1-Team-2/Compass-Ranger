@@ -244,8 +244,10 @@ nav img {
 #icondata {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 #icondata img {
-  width: 100%;
+  width: 50%;
+  height: 50%;
   background-size: cover;
 }
