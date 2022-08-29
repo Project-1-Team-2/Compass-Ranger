@@ -52,6 +52,59 @@ let states = [
   "Wyoming",
 ];
 
+let statesAbr = [
+  "AL",
+  "AK",
+  "AZ",
+  "AR",
+  "CA",
+  "CO",
+  "CT",
+  "DE",
+  "FL",
+  "GA",
+  "HI",
+  "ID",
+  "IL",
+  "IN",
+  "IA",
+  "KS",
+  "KY",
+  "LA",
+  "ME",
+  "MD",
+  "MA",
+  "MI",
+  "MN",
+  "MS",
+  "MO",
+  "MT",
+  "NE",
+  "NV",
+  "NH",
+  "NJ",
+  "NM",
+  "NY",
+  "NC",
+  "ND",
+  "OH",
+  "OK",
+  "OR",
+  "PA",
+  "RI",
+  "SC",
+  "SD",
+  "TN",
+  "TX",
+  "UT",
+  "VT",
+  "VA",
+  "WA",
+  "WV",
+  "WI",
+  "WY",
+];
+
 paths.forEach((el, index) => {
   el.setAttribute("id", index);
 });
@@ -59,6 +112,6 @@ paths.forEach((el, index) => {
 paths.forEach((el) => {
   el.addEventListener("click", (e) => {
     let state = states[e.path[0].id];
-    document.location.assign(`./main.html?${state}`);
+    document.location.assign(`./indexPage-2.html?${state}`);
   });
 });
