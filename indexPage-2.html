@@ -12,7 +12,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+    
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
@@ -60,53 +60,55 @@
         <div class="weather">
           <div class="weather-wrapper-1">
             <div class="mainweatherdata">
-              <p id="locationName">Chicago</h3>
-              <p id="temperature">88F</p>
-              <p>Sunset</p>
-              <p>Sunrise</p>
+              <p id="locationName"></h3>
+              <p id="temperature"></p>
+              <p id="sunrise"></p>
+              <p id="sunset"></p>
             </div>
-            <div id="icondata" >Icon</div>
+            <div id="icondata" ><img src="" alt=""></div>
             <div id="additionaldata">
-              <p>Humidity</p>
-              <p>Wind + Direction</p>
-              <p>Precipitations</p>
+              <p id="humidity"></p>
+              <p id="wind__direction"></p>
+              <p id="precipitations"></p>
             </div>
           </div>
           <div class="weather-wrapper-2">
-            <div class="forecastdata" id="0">
-              <p id="forecastdate">08/25/2022</p>
-              <div id="forecasticon">TBD</div>
-              <p id="forecasttemp">80F</p>
-              <p id="forecastwind">6ft/s</p>
-              <p id="forecastprecip">0.5in</p>
+            <div class="forecastdata" id="f0">
+              <p class="forecastdate"></p>
+              <div class="forecasticon"><img  src="" alt="" style="width: 40px; height:40px" ></div>
+              <p class="forecasttemp"></p>
+              <p class="forecastwind"></p>
+              <p class="forecastprecip"></p>
+            
             </div>
-            <div class="forecastdata" id="1">
-              <p id="forecastdate">08/25/2022</p>
-              <div id="forecasticon">TBD</div>
-              <p id="forecasttemp">80F</p>
-              <p id="forecastwind">6ft/s</p>
-              <p id="forecastprecip">0.5in</p>
+            <div class="forecastdata" id="f1">
+              <p class="forecastdate"></p>
+              <div class="forecasticon"><img  src="" alt="" style="width: 40px; height:40px" ></div>
+              <p class="forecasttemp"></p>
+              <p class="forecastwind"></p>
+              <p class="forecastprecip"></p>
             </div>
-            <div class="forecastdata" id="2">
-              <p id="forecastdate">08/25/2022</p>
-              <div id="forecasticon">TBD</div>
-              <p id="forecasttemp">80F</p>
-              <p id="forecastwind">6ft/s</p>
-              <p id="forecastprecip">0.5in</p>
+            <div class="forecastdata" id="f2">
+              <p class="forecastdate"></p>
+              <div class="forecasticon"><img  src="" alt="" style="width: 40px; height:40px" ></div>
+              <p class="forecasttemp"></p>
+              <p class="forecastwind"></p>
+              <p class="forecastprecip"></p>
             </div>
-            <div class="forecastdata" id="3">
-              <p id="forecastdate">08/25/2022</p>
-              <div id="forecasticon">TBD</div>
-              <p id="forecasttemp">80F</p>
-              <p id="forecastwind">6ft/s</p>
-              <p id="forecastprecip">0.5in</p>
+            <div class="forecastdata" id="f3">
+              <p class="forecastdate"></p>
+              <div class="forecasticon"><img  src="" alt="" style="width: 40px; height:40px" ></div>
+              <p class="forecasttemp"></p>
+              <p class="forecastwind"></p>
+              <p class="forecastprecip"></p>
             </div>
-            <div class="forecastdata" id="4">
-              <p id="forecastdate">08/25/2022</p>
-              <div id="forecasticon">TBD</div>
-              <p id="forecasttemp">80F</p>
-              <p id="forecastwind">6ft/s</p>
-              <p id="forecastprecip">0.5in</p>
+            <div class="forecastdata" id="f4">
+              <p class="forecastdate"></p>
+              <div class="forecasticon"><img  src="" alt="" style="width: 40px; height:40px" ></div>
+              <div class="forecasticon"></div>
+              <p class="forecasttemp"></p>
+              <p class="forecastwind"></p>
+              <p class="forecastprecip"></p>
             </div>
           </div>
         </div>
@@ -118,11 +120,21 @@
 
 
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script
+      src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+      integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+      crossorigin=""
+    ></script>
+    
     <script
       src="https://code.jquery.com/jquery-3.6.0.js"
       integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
       crossorigin="anonymous"
     ></script>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/js/indexPage-1.js"></script>
     <script src="./assets/js/indexPage-2.js"></script>

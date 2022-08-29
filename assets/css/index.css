@@ -64,25 +64,25 @@ svg g path:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 60%;
+  width: 55%;
   border: 1px solid black;
   align-items: center;
 }
 
 .park {
-  width: 40%;
+  width: 45%;
   height: 100%;
   border: 1px solid black;
 }
 
 .weather {
-  height: 40%;
+  height: 50%;
   width: 100%;
   border: 1px solid black;
 }
 
 .images {
-  height: 60%;
+  height: 50%;
   width: 100%;
   border: 1px solid black;
 }
@@ -176,21 +176,29 @@ nav img {
   position: relative;
 }
 
+.weather {
+  background-color: rgba(118, 233, 237, 0.484);
+}
+
 .weather-wrapper-1 {
   display: flex;
-  height: 50%;
+  height: 45%;
   width: 100%;
   border: 1px solid black;
 }
 
 .weather-wrapper-2 {
   display: flex;
-  height: 50%;
+
+  height: 55%;
   width: 100%;
   border: 1px solid black;
 }
 
 .forecastdata {
+  font-size: 12px;
+  padding: 3px;
+
   width: 20%;
   height: 100%;
   border: 1px solid black;
@@ -200,18 +208,29 @@ nav img {
   width: 35%;
   height: 100%;
   border: 1px solid black;
+  padding: 5px;
+}
+
+.forecasticon,
+.forecastdate {
+  text-align: center;
+}
+
+.forecasttemp {
+  padding-top: 15px;
 }
 
 #icondata {
-  width: 30%;
+  width: 25%;
   height: 100%;
   border: 1px solid black;
 }
 
 #additionaldata {
-  width: 35%;
+  width: 40%;
   height: 100%;
   border: 1px solid black;
+  padding: 5px;
 }
 
 .images img {
@@ -224,15 +243,14 @@ nav img {
   object-fit: cover;
 }
 
-
-.favBtn {
-  background-color: goldenrod;
-  border-radius: 1px;
-  margin: 2px;
-  padding: 2px;
+#icondata {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* 
-.myFavorites {
-  ;
-} */
+#icondata img {
+  width: 75%;
+  height: 75%;
+  background-size: cover;
+}
