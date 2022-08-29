@@ -79,6 +79,7 @@ svg g path:hover {
   height: 50%;
   width: 100%;
   border: 1px solid black;
+  background-color: rgba(192, 238, 240, 0.484);
 }
 
 .images {
@@ -174,10 +175,6 @@ nav img {
   height: 90vh;
   opacity: 1;
   position: relative;
-}
-
-.weather {
-  background-color: rgba(118, 233, 237, 0.484);
 }
 
 .weather-wrapper-1 {
