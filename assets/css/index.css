@@ -55,7 +55,7 @@ svg g path:hover {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
-  border: 1px solid black;
+  border: none;
   height: 600px;
   margin-bottom: 5px;
 }
@@ -198,7 +198,6 @@ nav img {
 .forecastdata {
   font-size: 12px;
   padding: 3px;
-
   width: 20%;
   height: 100%;
   border: 1px solid black;
@@ -253,4 +252,8 @@ nav img {
   width: 75%;
   height: 75%;
   background-size: cover;
+}
+
+.btn-floating {
+  display: flex;
 }
