@@ -235,3 +235,5 @@ function displayWeather(lat, long) {
 getParks();
 getGeolocation();
 getIssLocation();
+
+
