@@ -137,6 +137,11 @@ function getParks() {
     .then((data) => {
       displayWeather(locationData.currentLat, locationData.currentLong);
       for (let i = 0; i < data.data.length; i++) {
+        images[i].push(data.data[i].images[0].url);
+        images[i].push(data.data[i].images[1].url);
+        images[i].push(data.data[i].images[2].url);
+        images[i].push(data.data[i].images[3].url);
+        // images[i].push(data.data[i].images[4].url);
         $(`#${i}`).removeClass(`hidden`);
         $(`#${i} h3`).text(`${data.data[i].fullName}, ${data.data[i].states}`);
         $(`#${i} h3`)
@@ -145,6 +150,7 @@ function getParks() {
           .attr("data-name", data.data[i].name);
         $(`#${i} .description`).text(`${data.data[i].description}`);
       }
+      console.log(data);
     });
 }
 
@@ -152,7 +158,7 @@ function getParks() {
 let interval = setInterval(() => {
   getIssLocation();
   isISSnearBy();
-}, 2000);
+}, 1500);
 
 // Calling functions ------------>
 
@@ -162,21 +168,14 @@ function getWeather(lat, long) {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       return data;
     });
-}
-
-function getImages() {
-  for (j = 0; j < data.data[i].images.length; j++) {
-    images[i].push(data.data[i].images[j].url);
-  }
 }
 
 parks.forEach((el) => {
   el.addEventListener("click", (e) => {
     clearInterval(intervalPic);
-    $(".images img").attr("src", images[e.target.dataset.value][4]);
+    $(".images img").attr("src", images[e.target.dataset.value][3]);
     intervalPic = setInterval(() => {
       $(".images img").attr("src", images[e.target.dataset.value][index]);
       index++;
@@ -188,7 +187,6 @@ parks.forEach((el) => {
     let longitudePark = e.target.dataset.long;
     displayWeather(latitudePark, longitudePark);
     getWeather(latitudePark, longitudePark).then((data) => {
-      let h3 = document.querySelector("#locationName");
       if (theMarker !== null) {
         map.removeLayer(theMarker);
       }
@@ -218,7 +216,6 @@ function displayWeather(lat, long) {
     /* <------- weather-wrapper-2 info -------> */
     const forecastDays = data.forecast.forecastday;
     forecastDays.forEach((el, idx) => {
-      console.log(data.forecast.forecastday);
       $(`#f${idx} .forecastdate`).text(`${el.date}`);
       $(`#f${idx} .forecasticon img`).attr("src", el.day.condition.icon);
       $(`#f${idx} .forecasttemp`).text(`Temp: ${el.day.maxtemp_f}°F`);
@@ -227,6 +224,7 @@ function displayWeather(lat, long) {
     });
   });
 }
+
 getParks();
 getGeolocation();
 getIssLocation();
