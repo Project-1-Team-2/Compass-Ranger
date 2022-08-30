@@ -55,6 +55,7 @@ svg g path:hover {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
+  border: none;
   height: 600px;
   margin-bottom: 5px;
   border: none;
@@ -194,7 +195,6 @@ nav img {
 .forecastdata {
   font-size: 12px;
   padding: 3px;
-
   width: 20%;
   height: 100%;
   border: 1px solid black;
@@ -249,4 +249,42 @@ nav img {
   width: 75%;
   height: 75%;
   background-size: cover;
+}
+
+.description a {
+  cursor: pointer;
+  text-decoration: none;
+  background: rgb(4, 125, 150);
+  padding: 1px 5px;
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  margin-left: 2px;
+}
+
+.description a:hover {
+  background-color: rgb(15, 203, 203);
+}
+
+.description a:active {
+  transform: scale(0.95);
+}
+
+.parklist .parkName:hover {
+  cursor: pointer;
+  color: rgb(4, 4, 4);
+}
+
+.forecastdate {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.forecasttemp,
+.forecastprecip,
+.forecastwind {
+  font-weight: bold;
+}
+
+#locationName {
+  font-weight: bold;
 }

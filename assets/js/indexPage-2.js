@@ -107,7 +107,7 @@ function isISSnearBy() {
   let radiusLimitDeg = 250 / 69;
   let currentRadius = Math.sqrt(
     parseFloat(locationData.issLat - locationData.currentLat) ** 2 +
-      parseFloat((locationData.issLong - locationData.currentLong) ** 2)
+    parseFloat((locationData.issLong - locationData.currentLong) ** 2)
   );
 
   if (currentRadius <= radiusLimitDeg && !confirmed) {
@@ -228,3 +228,37 @@ function displayWeather(lat, long) {
 getParks();
 getGeolocation();
 getIssLocation();
+
+// setting button to add to favorites/ locale storage //
+$(document).ready(function () {
+  $('.fixed-action-btn').floatingActionButton();
+});
+
+$('.dropdown-trigger').dropdown();
+
+
+
+// function saveFav() {
+//   localStorage.setItem(parkName, JSON.stringify(parkName));
+//   var parkName = $(this).siblings.val()
+// }
+
+// function showFav() {
+//   parkName.forEach(function (_favorites) {
+//     $(`#${_favorites.id}`).val(_favorites.parkName);
+//   })
+// }
+
+// // function initFave() {
+//   var storedFav = JSON.parse(localStorage.getItem())
+//   saveFav()
+//   showFav()
+// }
+
+$(document).ready(function () {
+  $(`.saveBtn`).on('click', function () {
+    var parkName = $(this).siblings('.parkName').val()
+    localStorage.setItem(parkName)
+    console.log(parkName);
+  })
+})
