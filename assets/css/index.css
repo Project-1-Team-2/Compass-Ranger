@@ -251,3 +251,25 @@ nav img {
   height: 75%;
   background-size: cover;
 }
+
+.description a {
+  cursor: pointer;
+  text-decoration: none;
+  background: rgb(46, 212, 245);
+  padding: 1px 3px;
+  color: aliceblue;
+  border-radius: 5px;
+  margin-left: 2px;
+}
+
+.description a:hover {
+  background-color: rgb(13, 169, 169);
+}
+
+.description a:active {
+  transform: scale(0.95);
+}
+
+.description a:visited {
+  background-color: rgb(13, 169, 169);
+}
