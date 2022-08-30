@@ -107,7 +107,7 @@ function isISSnearBy() {
   let radiusLimitDeg = 250 / 69;
   let currentRadius = Math.sqrt(
     parseFloat(locationData.issLat - locationData.currentLat) ** 2 +
-    parseFloat((locationData.issLong - locationData.currentLong) ** 2)
+      parseFloat((locationData.issLong - locationData.currentLong) ** 2)
   );
 
   if (currentRadius <= radiusLimitDeg && !confirmed) {
@@ -148,7 +148,14 @@ function getParks() {
           .attr("data-lat", data.data[i].latitude)
           .attr("data-long", data.data[i].longitude)
           .attr("data-name", data.data[i].name);
-        $(`#${i} .description`).text(`${data.data[i].description}`);
+        $(`#${i} .description`)
+          .text(`${data.data[i].description}`)
+          .append(
+            $("<a>")
+              .attr("href", data.data[i].url)
+              .text("See more...")
+              .attr("target", "_blank")
+          );
       }
       console.log(data);
     });
@@ -231,12 +238,10 @@ getIssLocation();
 
 // setting button to add to favorites/ locale storage //
 $(document).ready(function () {
-  $('.fixed-action-btn').floatingActionButton();
+  $(".fixed-action-btn").floatingActionButton();
 });
 
-$('.dropdown-trigger').dropdown();
-
-
+$(".dropdown-trigger").dropdown();
 
 // function saveFav() {
 //   localStorage.setItem(parkName, JSON.stringify(parkName));
@@ -254,11 +259,42 @@ $('.dropdown-trigger').dropdown();
 //   saveFav()
 //   showFav()
 // }
-
+let favoriteParks = {};
 $(document).ready(function () {
-  $(`.saveBtn`).on('click', function () {
-    var parkName = $(this).siblings('.parkName').val()
-    localStorage.setItem(parkName)
-    console.log(parkName);
-  })
-})
+  let user = JSON.parse(localStorage.getItem("favoriteParks"));
+  Object.keys(user).forEach((el) => {
+    $("#dropdown1").append(
+      $("<li>").append(
+        $("<a>")
+          .text(el)
+          .attr(
+            "href",
+            $(this).siblings(".description").children().attr("href")
+          )
+          .attr("target", "_blank")
+      )
+    );
+  });
+});
+
+$(`.saveBtn`).on("click", function () {
+  favoriteParks = {};
+  var parkName = $(this).siblings(".parkName").text();
+  favoriteParks[parkName] = "";
+  localStorage.setItem("favoriteParks", JSON.stringify(favoriteParks));
+  // favoriteParks = {};
+  let user = JSON.parse(localStorage.getItem("favoriteParks"));
+  Object.keys(user).forEach((el) => {
+    $("#dropdown1").append(
+      $("<li>").append(
+        $("<a>")
+          .text(el)
+          .attr(
+            "href",
+            $(this).siblings(".description").children().attr("href")
+          )
+          .attr("target", "_blank")
+      )
+    );
+  });
+});
