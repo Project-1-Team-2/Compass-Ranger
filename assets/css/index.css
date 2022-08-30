@@ -59,7 +59,7 @@ svg g path:hover {
   flex-wrap: wrap;
   border: none;
   height: 600px;
-  margin-bottom: 5px;
+  margin-bottom: 25px;
 }
 
 .parklist {
@@ -67,13 +67,14 @@ svg g path:hover {
   flex-direction: column;
   justify-content: space-between;
   width: 55%;
-
+  border-right: 1px solid black;
   align-items: center;
+  height: 80vh;
 }
 
 .park {
   width: 45%;
-  height: 100%;
+  height: 80vh;
 }
 
 .weather {
@@ -143,10 +144,11 @@ svg g path:hover {
 .parkContent {
   border-bottom: 1px solid black;
   padding: 2px 7px;
-  width: 100%;
+  width: 95%;
 }
 
 .parkName {
+  display: inline-block;
   margin-top: 5px;
   font-size: 24px;
   font-weight: bold;
@@ -159,8 +161,8 @@ svg g path:hover {
   font-size: 12px;
   margin-bottom: 10px;
   color: rgb(0, 0, 0);
-
   font-weight: 500;
+  line-height: 1.3rem;
 }
 
 .info {
@@ -263,6 +265,7 @@ nav img {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top: none;
 }
 
 #icondata img {
@@ -307,4 +310,22 @@ nav img {
 
 #locationName {
   font-weight: bold;
+}
+
+.parkName {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: rgba(4, 4, 4, 0.6);
+  font-family: "Oleo Script Swash Caps", cursive;
+}
+
+.saveBtn {
+  display: inline-block;
+}
+
+.saveBtn:active {
+  transform: scale(0.9);
 }
