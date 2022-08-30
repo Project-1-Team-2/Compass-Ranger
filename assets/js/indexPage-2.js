@@ -141,21 +141,14 @@ function getParks() {
         images[i].push(data.data[i].images[1].url);
         images[i].push(data.data[i].images[2].url);
         images[i].push(data.data[i].images[3].url);
-        images[i].push(data.data[i].images[4].url);
+        // images[i].push(data.data[i].images[4].url);
         $(`#${i}`).removeClass(`hidden`);
         $(`#${i} h3`).text(`${data.data[i].fullName}, ${data.data[i].states}`);
         $(`#${i} h3`)
           .attr("data-lat", data.data[i].latitude)
           .attr("data-long", data.data[i].longitude)
           .attr("data-name", data.data[i].name);
-        $(`#${i} .description`)
-          .text(`${data.data[i].description}`)
-          .append(
-            $("<a>")
-              .text("See more ...")
-              .attr("href", data.data[i].url)
-              .attr("target", "_blank")
-          );
+        $(`#${i} .description`).text(`${data.data[i].description}`);
       }
       console.log(data);
     });
@@ -165,7 +158,7 @@ function getParks() {
 let interval = setInterval(() => {
   getIssLocation();
   isISSnearBy();
-}, 2000);
+}, 1500);
 
 // Calling functions ------------>
 
@@ -182,7 +175,7 @@ function getWeather(lat, long) {
 parks.forEach((el) => {
   el.addEventListener("click", (e) => {
     clearInterval(intervalPic);
-    $(".images img").attr("src", images[e.target.dataset.value][4]);
+    $(".images img").attr("src", images[e.target.dataset.value][3]);
     intervalPic = setInterval(() => {
       $(".images img").attr("src", images[e.target.dataset.value][index]);
       index++;
@@ -235,5 +228,3 @@ function displayWeather(lat, long) {
 getParks();
 getGeolocation();
 getIssLocation();
-
-

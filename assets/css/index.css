@@ -4,6 +4,8 @@
   padding: 0;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Carter+One&family=Caveat&family=Oleo+Script+Swash+Caps&display=swap");
+
 body {
   display: flex;
   flex-direction: column;
@@ -65,21 +67,20 @@ svg g path:hover {
   flex-direction: column;
   justify-content: space-between;
   width: 55%;
-  border: 1px solid black;
+
   align-items: center;
 }
 
 .park {
   width: 45%;
   height: 100%;
-  border: 1px solid black;
 }
 
 .weather {
   height: 50%;
   width: 100%;
-  border: 1px solid black;
-  background-color: rgba(192, 238, 240, 0.484);
+  background-color: rgb(2, 195, 230);
+  border-left: 1px solid black;
 }
 
 .images {
@@ -150,11 +151,16 @@ svg g path:hover {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 12px;
+  color: rgba(4, 4, 4, 0.6);
+  font-family: "Oleo Script Swash Caps", cursive;
 }
 
 .description {
   font-size: 12px;
   margin-bottom: 10px;
+  color: rgb(0, 0, 0);
+
+  font-weight: 500;
 }
 
 .info {
@@ -180,16 +186,16 @@ nav img {
 .weather-wrapper-1 {
   display: flex;
   height: 45%;
-  width: 100%;
-  border: 1px solid black;
+  align-items: center;
+  margin: 0 5px;
+  justify-content: center;
 }
 
 .weather-wrapper-2 {
   display: flex;
-
+  align-items: center;
   height: 55%;
   width: 100%;
-  border: 1px solid black;
 }
 
 .forecastdata {
@@ -197,15 +203,23 @@ nav img {
   padding: 3px;
 
   width: 20%;
-  height: 100%;
-  border: 1px solid black;
+  height: 90%;
+  border: 1px solid rgb(255, 253, 253);
+  border-radius: 5px;
+  margin: 0 3px;
 }
 
 .mainweatherdata {
-  width: 35%;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
   height: 100%;
-  border: 1px solid black;
+  border: 1px solid rgb(255, 254, 254);
+  border-top: none;
+  border-bottom-left-radius: 10px;
   padding: 5px;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .forecasticon,
@@ -218,15 +232,21 @@ nav img {
 }
 
 #icondata {
-  width: 25%;
+  width: 20%;
   height: 100%;
-  border: 1px solid black;
+  border: 1px solid rgb(255, 255, 255);
 }
 
 #additionaldata {
-  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 30%;
   height: 100%;
-  border: 1px solid black;
+  border: 1px solid rgb(255, 255, 255);
+  border-top: none;
+  border-bottom-right-radius: 10px;
   padding: 5px;
 }
 
@@ -255,21 +275,37 @@ nav img {
 .description a {
   cursor: pointer;
   text-decoration: none;
-  background: rgb(46, 212, 245);
-  padding: 1px 3px;
-  color: aliceblue;
+  background: rgb(4, 125, 150);
+  padding: 1px 5px;
+  color: rgb(255, 255, 255);
   border-radius: 5px;
   margin-left: 2px;
 }
 
 .description a:hover {
-  background-color: rgb(13, 169, 169);
+  background-color: rgb(15, 203, 203);
 }
 
 .description a:active {
   transform: scale(0.95);
 }
 
-.description a:visited {
-  background-color: rgb(13, 169, 169);
+.parklist .parkName:hover {
+  cursor: pointer;
+  color: rgb(4, 4, 4);
+}
+
+.forecastdate {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.forecasttemp,
+.forecastprecip,
+.forecastwind {
+  font-weight: bold;
+}
+
+#locationName {
+  font-weight: bold;
 }
