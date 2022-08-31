@@ -310,3 +310,131 @@ nav img {
 .saveBtn:active {
   transform: scale(0.9);
 }
+
+/* minga contact style--------> */
+.nav__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 9vh;
+  background-color: darkgreen;
+  padding: 0 30px;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+.brand__logo {
+  font-size: 35px;
+}
+#contact__container {
+  position: absolute;
+  width: 100%;
+  height: 550px;
+  opacity: 0.45;
+}
+.contact__container {
+  display: flex;
+}
+.develop__container {
+  margin-left: 50px;
+  margin-top: 250px;
+  height: 283px;
+  width: 90%;
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+ 
+}
+#develop__name {
+  border-radius: 10%;
+}
+.contact__icons {
+  width: 40px;
+}
+.icons__container {
+  display: flex;
+  justify-content: space-around;
+}
+.tooltip1__1:hover::after {
+  content: "ray.kurbanov@gmail.com";
+  position: absolute;
+  font-weight: bold;
+  font-size: 22px;
+  left: 2.7em;
+  bottom: 0.8em;
+  color: black;
+}
+.tooltip1__2:hover::after {
+  content: "github profile";
+  position: absolute;
+  font-weight: bold;
+  font-size: 22px;
+  left: 4.7em;
+  bottom: 0.8em;
+  color: black;
+}
+
+.tooltip1__3:hover::after {
+  content: "linkedin profile";
+  position: absolute;
+  font-weight: bold;
+  font-size: 22px;
+  left: 4.4em;
+  bottom: 0.8em;
+  color: black;
+}
+.tooltip2__1:hover::after {
+  content: "timothy.signore@gmail.com";
+  position: absolute;
+  font-weight: bold;
+  font-size: 22px;
+  left: 18em;
+  bottom: 0.8em;
+  color: black;
+}
+.tooltip2__2:hover::after {
+  content: "github profile";
+  position: absolute;
+  font-weight: bold;
+  font-size: 22px;
+  left: 20.8em;
+  bottom: 0.8em;
+  color: black;
+}
+.tooltip2__3:hover::after {
+  content: "linkedin profile";
+  position: absolute;
+  font-weight: bold;
+  font-size: 22px;
+  left: 20.3em;
+  bottom: 0.8em;
+  color: black;
+}
+.tooltip3__1:hover::after {
+  content: "mingadag204@gmail.com";
+  position: absolute;
+  font-weight: bold;
+  font-size: 22px;
+  right: 2.3em;
+  bottom: 0.8em;
+  color: black;
+}
+.tooltip3__2:hover::after {
+  content: "github profile";
+  position: absolute;
+  font-weight: bold;
+  font-size: 22px;
+  right: 4.8em;
+  bottom: 0.8em;
+  color: black;
+}
+.tooltip3__3:hover::after {
+  content: "linkedin profile";
+  position: absolute;
+  font-weight: bold;
+  font-size: 22px;
+  right: 4.6em;
+  bottom: 0.8em;
+  color: black;
+}
