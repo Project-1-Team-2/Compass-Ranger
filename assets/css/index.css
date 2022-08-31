@@ -326,6 +326,7 @@ a {
 }
 .brand__logo {
   font-size: 35px;
+  color: white;
 }
 #contact__container {
   position: absolute;
@@ -344,7 +345,6 @@ a {
   position: absolute;
   display: flex;
   justify-content: space-around;
- 
 }
 #develop__name {
   border-radius: 10%;
@@ -437,4 +437,15 @@ a {
   right: 4.6em;
   bottom: 0.8em;
   color: black;
+}
+.develop__wish {
+  display: flex;
+  width: 600px;
+  margin: 70px auto;
+}
+.develop__text {
+  color: black;
+}
+.extension__btn {
+  margin: 10px;
 }
