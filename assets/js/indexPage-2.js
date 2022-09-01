@@ -63,7 +63,7 @@ let getGeolocation = () => {
     locationData.currentLat = lat;
     locationData.currentLong = long;
 
-    L.marker([lat, long])
+    L.marker([position.coords.latitude, position.coords.longitude])
       .addTo(map)
       .bindPopup("Your Current Location")
       .openPopup();
