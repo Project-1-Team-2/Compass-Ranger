@@ -374,11 +374,14 @@ a {
 }
 .contact__icons {
   width: 40px;
+  margin: 13px;
+  justify-content: center;
 }
 
 .icons__container {
   display: flex;
-  justify-content: space-around;
+
+  justify-content: center;
   padding-top: 17px;
 }
 
