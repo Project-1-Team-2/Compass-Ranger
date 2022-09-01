@@ -204,7 +204,7 @@ parks.forEach((el) => {
         index > images[e.target.dataset.value].length - 1 ||
         images[e.target.dataset.value][index] == undefined
       ) {
-        index = (index % images[e.target.dataset.value].length) - 1;
+        index = index % 4;
       }
     }, 2000);
     let latitudePark = e.target.dataset.lat;
