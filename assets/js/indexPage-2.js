@@ -136,12 +136,26 @@ function getParks() {
     .then((response) => response.json())
     .then((data) => {
       displayWeather(locationData.currentLat, locationData.currentLong);
+      console.log(data);
+
       for (let i = 0; i < data.data.length; i++) {
-        // images[i].push(data.data[i].images[0].url);
-        // images[i].push(data.data[i].images[1].url);
-        // images[i].push(data.data[i].images[2].url);
-        // images[i].push(data.data[i].images[3].url);
-        // images[i].push(data.data[i].images[4].url);
+        if (data.data[i].images[0].url) {
+          images[i].push(data.data[i].images[0].url);
+        }
+        if (data.data[i].images[1].url) {
+          images[i].push(data.data[i].images[1].url);
+        }
+        if (data.data[i].images[2].url) {
+          images[i].push(data.data[i].images[2].url);
+        }
+        if (data.data[i].images[3].url) {
+          images[i].push(data.data[i].images[3].url);
+        }
+        if (data.data[i].images[4].url) {
+          images[i].push(data.data[i].images[4].url);
+        }
+
+        console.log(images);
         $(`#${i}`).removeClass(`hidden`);
         $(`#${i} h3`).text(`${data.data[i].fullName}`);
         $(`#${i} h4`).text(`${data.data[i].states}`);
@@ -151,15 +165,14 @@ function getParks() {
           .attr("data-name", data.data[i].name);
         $(`#${i} .description`)
           .text(`${data.data[i].description}`)
-          .append($("<br>"))
           .append(
             $("<a>")
               .attr("href", data.data[i].url)
               .text("See more...")
               .attr("target", "_blank")
+              .css({ width: "75px", display: "block" })
           );
       }
-      console.log(data);
     });
 }
 
@@ -191,7 +204,7 @@ parks.forEach((el) => {
       if (index > 4) {
         index = (index % 4) - 1;
       }
-    }, 3000);
+    }, 2000);
     let latitudePark = e.target.dataset.lat;
     let longitudePark = e.target.dataset.long;
     displayWeather(latitudePark, longitudePark);
@@ -243,6 +256,7 @@ getIssLocation();
 $(document).ready(function () {
   $(".fixed-action-btn").floatingActionButton();
   $(".dropdown-trigger").dropdown();
+  console.log(favoriteParks);
   favoriteParks = JSON.parse(localStorage.getItem("favoriteParks"));
   let hrefs = Object.values(favoriteParks);
   Object.keys(favoriteParks).forEach((el, index) => {
@@ -285,7 +299,9 @@ $(`.saveBtn`).on("click", function () {
 });
 
 $("#dropdown1").on("click", ".delete", (e) => {
+  console.log($(this).data("clicked"));
   $(e.target).parent().remove();
+  console.log(favoriteParks);
   delete favoriteParks[$(e.target).siblings().text()];
   localStorage.removeItem(favoriteParks);
   localStorage.setItem("favoriteParks", JSON.stringify(favoriteParks));
