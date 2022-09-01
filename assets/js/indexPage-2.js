@@ -136,26 +136,24 @@ function getParks() {
     .then((response) => response.json())
     .then((data) => {
       displayWeather(locationData.currentLat, locationData.currentLong);
-      console.log(data);
 
       for (let i = 0; i < data.data.length; i++) {
-        if (data.data[i].images[0].url) {
+        if (data.data[i].images[0]) {
           images[i].push(data.data[i].images[0].url);
         }
-        if (data.data[i].images[1].url) {
+        if (data.data[i].images[1]) {
           images[i].push(data.data[i].images[1].url);
         }
-        if (data.data[i].images[2].url) {
+        if (data.data[i].images[2]) {
           images[i].push(data.data[i].images[2].url);
         }
-        if (data.data[i].images[3].url) {
+        if (data.data[i].images[3]) {
           images[i].push(data.data[i].images[3].url);
         }
-        if (data.data[i].images[4].url) {
+        if (data.data[i].images[4]) {
           images[i].push(data.data[i].images[4].url);
         }
 
-        console.log(images);
         $(`#${i}`).removeClass(`hidden`);
         $(`#${i} h3`).text(`${data.data[i].fullName}`);
         $(`#${i} h4`).text(`${data.data[i].states}`);
@@ -197,12 +195,16 @@ function getWeather(lat, long) {
 parks.forEach((el) => {
   el.addEventListener("click", (e) => {
     clearInterval(intervalPic);
-    $(".images img").attr("src", images[e.target.dataset.value][3]);
+    $(".images img").attr("src", images[e.target.dataset.value][1]);
     intervalPic = setInterval(() => {
       $(".images img").attr("src", images[e.target.dataset.value][index]);
+
       index++;
-      if (index > 4) {
-        index = (index % 4) - 1;
+      if (
+        index > images[e.target.dataset.value].length - 1 ||
+        images[e.target.dataset.value][index] == undefined
+      ) {
+        index = (index % images[e.target.dataset.value].length) - 1;
       }
     }, 2000);
     let latitudePark = e.target.dataset.lat;
@@ -256,7 +258,6 @@ getIssLocation();
 $(document).ready(function () {
   $(".fixed-action-btn").floatingActionButton();
   $(".dropdown-trigger").dropdown();
-  console.log(favoriteParks);
   favoriteParks = JSON.parse(localStorage.getItem("favoriteParks"));
   let hrefs = Object.values(favoriteParks);
   Object.keys(favoriteParks).forEach((el, index) => {
