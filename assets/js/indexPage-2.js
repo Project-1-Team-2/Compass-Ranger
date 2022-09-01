@@ -294,5 +294,6 @@ $(`.saveBtn`).on("click", function () {
 // });
 
 $("#dropdown1").on("click", ".delete", (e) => {
-  console.log(e.target.parent());
+  $(e.target).parent().remove();
+  delete favoriteParks[$(e.target).siblings().text()];
 });
