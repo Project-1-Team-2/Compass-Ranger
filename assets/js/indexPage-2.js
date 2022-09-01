@@ -267,6 +267,7 @@ $(document).ready(function () {
     );
   });
   const deleteBtns = document.querySelectorAll(".btn.delete");
+  console.log("Event listener is running");
   deleteBtns.forEach((el) => {
     el.addEventListener("click", (e) => {
       const toDelete = e.target.dataset.name;
