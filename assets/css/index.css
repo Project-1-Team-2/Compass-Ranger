@@ -315,7 +315,6 @@ nav img {
   color: rgba(4, 4, 4, 0.6);
   margin: auto;
   /* padding: 1em; */
-
 }
 
 .saveBtn {
@@ -489,5 +488,30 @@ a {
   display: flex;
   text-align: center;
   justify-content: center;
+}
 
+#dropdown1 li {
+  display: flex;
+  width: 95%;
+  align-items: center;
+  justify-content: center;
+}
+
+#dropdown1 a {
+  width: 90% !important;
+}
+
+#dropdown1 {
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 5px auto !important;
+  width: 300px !important;
+
+  left: 80% !important;
+  top: 100% !important;
+  height: auto !important;
+}
+
+#dropdown1 a {
+  width: 150px;
 }
