@@ -245,7 +245,6 @@ $(document).ready(function () {
 $(".dropdown-trigger").dropdown();
 
 const favoriteParks = {};
-
 $(document).ready(function () {
   let savedParks = JSON.parse(localStorage.getItem("favoriteParks"));
   Object.keys(savedParks).forEach((el) => {
@@ -262,8 +261,20 @@ $(document).ready(function () {
             )
             .attr("target", "_blank")
         )
-        .append($("<button>").text("-").addClass("btn delete"))
+        .append(
+          $("<button>").text("-").attr("data-name", el).addClass("btn delete")
+        )
     );
+  });
+  const deleteBtns = document.querySelectorAll(".btn.delete");
+  deleteBtns.forEach((el) => {
+    el.addEventListener("click", (e) => {
+      const toDelete = e.target.dataset.name;
+      delete savedParks[toDelete];
+      console.log(savedParks);
+      localStorage.setItem("favoriteParks", JSON.stringify(savedParks));
+      window.location.reload();
+    });
   });
 });
 
@@ -281,16 +292,23 @@ $(`.saveBtn`).on("click", function () {
             $(this).siblings(".description").children().attr("href")
           )
           .attr("target", "_blank")
-          .append($("<button>").text("-").addClass("btn delete"))
+      )
+      .append(
+        $("<button>")
+          .text("-")
+          .attr("data-name", parkName)
+          .addClass("btn delete")
+          .on("click", (e) => {
+            const toDelete = e.target.dataset.name;
+            let savedParks = JSON.parse(localStorage.getItem("favoriteParks"));
+            delete savedParks[toDelete];
+            console.log(savedParks);
+            localStorage.setItem("favoriteParks", JSON.stringify(savedParks));
+            window.location.reload();
+          })
       )
   );
   localStorage.setItem("favoriteParks", JSON.stringify(favoriteParks));
 });
-
-// $(".delete").each((el) => {
-//   el.addEventListener("click", (e) => {
-//     console.log(e.target);
-//   });
-// });
 
 let deleteParks = document.querySelectorAll("#dropdown1 .delete");
