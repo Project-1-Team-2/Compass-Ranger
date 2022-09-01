@@ -137,10 +137,10 @@ function getParks() {
     .then((data) => {
       displayWeather(locationData.currentLat, locationData.currentLong);
       for (let i = 0; i < data.data.length; i++) {
-        images[i].push(data.data[i].images[0].url);
-        images[i].push(data.data[i].images[1].url);
-        images[i].push(data.data[i].images[2].url);
-        images[i].push(data.data[i].images[3].url);
+        // images[i].push(data.data[i].images[0].url);
+        // images[i].push(data.data[i].images[1].url);
+        // images[i].push(data.data[i].images[2].url);
+        // images[i].push(data.data[i].images[3].url);
         // images[i].push(data.data[i].images[4].url);
         $(`#${i}`).removeClass(`hidden`);
         $(`#${i} h3`).text(`${data.data[i].fullName}`);
@@ -293,4 +293,6 @@ $(`.saveBtn`).on("click", function () {
 //   });
 // });
 
-$("#dropdown1").on("click", ".delete", (e) => {});
+$("#dropdown1").on("click", ".delete", (e) => {
+  console.log(e.target.parent());
+});
