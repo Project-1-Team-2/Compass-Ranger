@@ -151,6 +151,7 @@ function getParks() {
           .attr("data-name", data.data[i].name);
         $(`#${i} .description`)
           .text(`${data.data[i].description}`)
+          .append($("<br>"))
           .append(
             $("<a>")
               .attr("href", data.data[i].url)
