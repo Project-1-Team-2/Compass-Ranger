@@ -55,30 +55,30 @@ svg g path:hover {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
-  border: 1px solid black;
+  border: none;
   height: 600px;
-  margin-bottom: 5px;
+  margin-bottom: 25px;
 }
 
-.parklist {
+.parkList {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 55%;
-  border: 1px solid black;
+  border-right: 1px solid black;
   align-items: center;
+  height: 80vh;
 }
 
 .park {
   width: 45%;
-  height: 100%;
-  border: 1px solid black;
+  height: 80vh;
 }
 
 .weather {
   height: 50%;
   width: 100%;
-  border: 1px solid black;
+  background-color: rgba(192, 238, 240, 0.484);
 }
 
 .images {
@@ -91,7 +91,7 @@ svg g path:hover {
   background-color: darkgreen;
 }
 
-.page-footer {
+c .page-footer {
   display: flex;
   height: 6vh;
   background-color: darkgreen;
@@ -101,6 +101,12 @@ svg g path:hover {
   margin-left: 1.5em;
   font-family: "Noto Serif HK", serif;
 }
+
+/* .nav-wrapper img {
+  max-width: 10%;
+  max-height: 100%;
+
+} */
 
 .card {
   margin-right: 2em;
@@ -141,19 +147,15 @@ svg g path:hover {
 .parkContent {
   border-bottom: 1px solid black;
   padding: 2px 7px;
-  width: 100%;
-}
-
-.parkName {
-  margin-top: 5px;
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 12px;
+  width: 95%;
 }
 
 .description {
   font-size: 12px;
   margin-bottom: 10px;
+  color: rgb(0, 0, 0);
+  font-weight: 500;
+  line-height: 1.3rem;
 }
 
 .info {
@@ -175,9 +177,6 @@ nav img {
   opacity: 1;
   position: relative;
 }
-.weather {
-  background-color: rgba(118, 233, 237, 0.484);
-}
 
 .weather-wrapper-1 {
   display: flex;
@@ -197,7 +196,6 @@ nav img {
 .forecastdata {
   font-size: 12px;
   padding: 3px;
-
   width: 20%;
   height: 100%;
   border: 1px solid black;
@@ -209,6 +207,7 @@ nav img {
   border: 1px solid black;
   padding: 5px;
 }
+
 .forecasticon,
 .forecastdate {
   text-align: center;
@@ -245,9 +244,241 @@ nav img {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top: none;
 }
+
 #icondata img {
   width: 75%;
   height: 75%;
   background-size: cover;
+}
+
+.description a {
+  cursor: pointer;
+  text-decoration: none;
+  background: rgb(4, 125, 150);
+  padding: 1px 5px;
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  margin-left: 2px;
+}
+
+.description a:hover {
+  background-color: rgb(15, 203, 203);
+}
+
+.description a:active {
+  transform: scale(0.95);
+}
+
+.parklist .parkName:hover {
+  cursor: pointer;
+  color: rgb(4, 4, 4);
+}
+
+.forecastdate {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.forecasttemp,
+.forecastprecip,
+.forecastwind {
+  font-weight: bold;
+}
+
+#locationName {
+  font-weight: bold;
+}
+
+.parkName {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: rgba(4, 4, 4, 0.6);
+  font-family: "Oleo Script Swash Caps", cursive;
+}
+
+.parkName:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.stateNames {
+  font-family: "Oleo Script Swash Caps", cursive;
+  font-size: 18px;
+  color: rgba(4, 4, 4, 0.6);
+  margin: auto;
+  /* padding: 1em; */
+}
+
+.saveBtn {
+  display: inline-block;
+}
+
+.saveBtn:active {
+  transform: scale(0.9);
+}
+
+/* minga contact style--------> */
+.nav__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 9vh;
+  background-color: darkgreen;
+  padding: 0 30px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.brand__logo {
+  font-size: 35px;
+  color: white;
+}
+
+#contact__container {
+  position: absolute;
+  width: 100%;
+  height: 693px;
+  opacity: 0.45;
+}
+
+.contact__container {
+  display: flex;
+}
+
+.develop__container {
+  margin-left: 50px;
+  margin-top: 150px;
+  height: 283px;
+  width: 90%;
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+}
+
+#develop__name {
+  border-radius: 10%;
+  transition: 0.3s;
+}
+
+#develop__name:hover {
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+}
+.contact__icons {
+  width: 40px;
+  margin: 13px;
+  justify-content: center;
+}
+
+.icons__container {
+  display: flex;
+
+  justify-content: center;
+  padding-top: 17px;
+}
+
+.tooltip img:hover {
+  transition: 0.3s all ease-in-out;
+  transform: translate(5px, -5px);
+}
+
+.tooltip:hover {
+  transition: all 0.3s ease-in-out;
+}
+
+.develop__wish {
+  display: flex;
+  width: 600px;
+  margin: 40px auto;
+}
+
+.develop__text {
+  font-size: 30px;
+  color: black;
+  font-weight: 500;
+}
+
+.extension__btn {
+  margin: 10px;
+  color: white;
+}
+
+.navStateText {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+#dropdown1 li {
+  display: flex;
+  width: 95%;
+  align-items: center;
+  justify-content: center;
+}
+
+#dropdown1 a {
+  width: 90% !important;
+}
+
+#dropdown1 {
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 5px auto !important;
+  width: 300px !important;
+  left: 80vw !important;
+  top: 100% !important;
+  height: auto !important;
+}
+
+#dropdown1 a {
+  width: 150px;
+}
+#dropdown1.dropdown-content__contacts {
+  top: 68px !important;
+}
+.active {
+  background-color: rgb(4, 88, 23) !important;
+  padding: 25px 20px;
+}
+
+.extension__btn:hover {
+  background-color: rgb(4, 88, 23);
+}
+
+/* ticker-----> */
+.ticker {
+  padding-top: 470px;
+  font-size: 25px;
+}
+
+.logos {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+marquee span {
+  margin: 5px 5px;
+}
+
+#statement {
+  text-decoration: underline;
+  color: red;
+}
+
+#university {
+  font-weight: bold;
+  color: blue;
+}
+
+.mentorName {
+  font-weight: bold;
 }

@@ -63,7 +63,7 @@ let getGeolocation = () => {
     locationData.currentLat = lat;
     locationData.currentLong = long;
 
-    L.marker([lat, long])
+    L.marker([position.coords.latitude, position.coords.longitude])
       .addTo(map)
       .bindPopup("Your Current Location")
       .openPopup();
@@ -136,14 +136,40 @@ function getParks() {
     .then((response) => response.json())
     .then((data) => {
       displayWeather(locationData.currentLat, locationData.currentLong);
+
       for (let i = 0; i < data.data.length; i++) {
+        if (data.data[i].images[0]) {
+          images[i].push(data.data[i].images[0].url);
+        }
+        if (data.data[i].images[1]) {
+          images[i].push(data.data[i].images[1].url);
+        }
+        if (data.data[i].images[2]) {
+          images[i].push(data.data[i].images[2].url);
+        }
+        if (data.data[i].images[3]) {
+          images[i].push(data.data[i].images[3].url);
+        }
+        if (data.data[i].images[4]) {
+          images[i].push(data.data[i].images[4].url);
+        }
+
         $(`#${i}`).removeClass(`hidden`);
-        $(`#${i} h3`).text(`${data.data[i].fullName}, ${data.data[i].states}`);
+        $(`#${i} h3`).text(`${data.data[i].fullName}`);
+        $(`#${i} h4`).text(`${data.data[i].states}`);
         $(`#${i} h3`)
           .attr("data-lat", data.data[i].latitude)
           .attr("data-long", data.data[i].longitude)
           .attr("data-name", data.data[i].name);
-        $(`#${i} .description`).text(`${data.data[i].description}`);
+        $(`#${i} .description`)
+          .text(`${data.data[i].description}`)
+          .append(
+            $("<a>")
+              .attr("href", data.data[i].url)
+              .text("See more...")
+              .attr("target", "_blank")
+              .css({ width: "75px", display: "block" })
+          );
       }
     });
 }
@@ -152,7 +178,7 @@ function getParks() {
 let interval = setInterval(() => {
   getIssLocation();
   isISSnearBy();
-}, 2000);
+}, 1500);
 
 // Calling functions ------------>
 
@@ -162,33 +188,29 @@ function getWeather(lat, long) {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       return data;
     });
-}
-
-function getImages() {
-  for (j = 0; j < data.data[i].images.length; j++) {
-    images[i].push(data.data[i].images[j].url);
-  }
 }
 
 parks.forEach((el) => {
   el.addEventListener("click", (e) => {
     clearInterval(intervalPic);
-    $(".images img").attr("src", images[e.target.dataset.value][4]);
+    $(".images img").attr("src", images[e.target.dataset.value][1]);
     intervalPic = setInterval(() => {
       $(".images img").attr("src", images[e.target.dataset.value][index]);
+
       index++;
-      if (index > 4) {
-        index = (index % 4) - 1;
+      if (
+        index > images[e.target.dataset.value].length - 1 ||
+        images[e.target.dataset.value][index] == undefined
+      ) {
+        index = index % 4;
       }
-    }, 3000);
+    }, 2000);
     let latitudePark = e.target.dataset.lat;
     let longitudePark = e.target.dataset.long;
     displayWeather(latitudePark, longitudePark);
     getWeather(latitudePark, longitudePark).then((data) => {
-      let h3 = document.querySelector("#locationName");
       if (theMarker !== null) {
         map.removeLayer(theMarker);
       }
@@ -218,7 +240,6 @@ function displayWeather(lat, long) {
     /* <------- weather-wrapper-2 info -------> */
     const forecastDays = data.forecast.forecastday;
     forecastDays.forEach((el, idx) => {
-      console.log(data.forecast.forecastday);
       $(`#f${idx} .forecastdate`).text(`${el.date}`);
       $(`#f${idx} .forecasticon img`).attr("src", el.day.condition.icon);
       $(`#f${idx} .forecasttemp`).text(`Temp: ${el.day.maxtemp_f}°F`);
@@ -227,6 +248,62 @@ function displayWeather(lat, long) {
     });
   });
 }
+
 getParks();
 getGeolocation();
 getIssLocation();
+
+// setting button to add to favorites/ locale storage //
+
+$(document).ready(function () {
+  $(".fixed-action-btn").floatingActionButton();
+  $(".dropdown-trigger").dropdown();
+  favoriteParks = JSON.parse(localStorage.getItem("favoriteParks"));
+  let hrefs = Object.values(favoriteParks);
+  Object.keys(favoriteParks).forEach((el, index) => {
+    $("#dropdown1").append(
+      $("<li>")
+        .addClass("list")
+        .append(
+          $("<a>").text(el).attr("href", hrefs[index]).attr("target", "_blank")
+        )
+        .append(
+          $("<button>").text("-").attr("data-name", el).addClass("btn delete")
+        )
+    );
+  });
+});
+
+$(`.saveBtn`).on("click", function () {
+  var parkName = $(this).siblings(".parkName").text();
+  if (favoriteParks[parkName] == undefined) {
+    favoriteParks[parkName] = $(this)
+      .siblings(".description")
+      .children()
+      .attr("href");
+    $("#dropdown1").append(
+      $("<li>")
+        .addClass("list")
+        .append(
+          $("<a>")
+            .text(parkName)
+            .attr(
+              "href",
+              $(this).siblings(".description").children().attr("href")
+            )
+            .attr("target", "_blank")
+        )
+        .append($("<button>").text("-").addClass("btn delete"))
+    );
+  }
+  localStorage.setItem("favoriteParks", JSON.stringify(favoriteParks));
+});
+
+$("#dropdown1").on("click", ".delete", (e) => {
+  console.log($(this).data("clicked"));
+  $(e.target).parent().remove();
+  console.log(favoriteParks);
+  delete favoriteParks[$(e.target).siblings().text()];
+  localStorage.removeItem(favoriteParks);
+  localStorage.setItem("favoriteParks", JSON.stringify(favoriteParks));
+});

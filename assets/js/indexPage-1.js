@@ -109,6 +109,10 @@ paths.forEach((el, index) => {
   el.setAttribute("id", index);
 });
 
+let favoriteParks = {};
+if (!JSON.parse(localStorage.getItem("favoriteParks"))) {
+  localStorage.setItem("favoriteParks", JSON.stringify(favoriteParks));
+}
 paths.forEach((el) => {
   el.addEventListener("click", (e) => {
     let state = states[e.path[0].id];
