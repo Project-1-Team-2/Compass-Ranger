@@ -107,7 +107,7 @@ function isISSnearBy() {
   let radiusLimitDeg = 250 / 69;
   let currentRadius = Math.sqrt(
     parseFloat(locationData.issLat - locationData.currentLat) ** 2 +
-    parseFloat((locationData.issLong - locationData.currentLong) ** 2)
+      parseFloat((locationData.issLong - locationData.currentLong) ** 2)
   );
 
   if (currentRadius <= radiusLimitDeg && !confirmed) {
@@ -244,58 +244,53 @@ $(document).ready(function () {
 
 $(".dropdown-trigger").dropdown();
 
-// function saveFav() {
-//   localStorage.setItem(parkName, JSON.stringify(parkName));
-//   var parkName = $(this).siblings.val()
-// }
+const favoriteParks = {};
 
-// function showFav() {
-//   parkName.forEach(function (_favorites) {
-//     $(`#${_favorites.id}`).val(_favorites.parkName);
-//   })
-// }
-
-// // function initFave() {
-//   var storedFav = JSON.parse(localStorage.getItem())
-//   saveFav()
-//   showFav()
-// }
-let favoriteParks = {};
 $(document).ready(function () {
-  let user = JSON.parse(localStorage.getItem("favoriteParks"));
-  Object.keys(user).forEach((el) => {
+  let savedParks = JSON.parse(localStorage.getItem("favoriteParks"));
+  Object.keys(savedParks).forEach((el) => {
+    favoriteParks[el] = "";
     $("#dropdown1").append(
-      $("<li>").append(
-        $("<a>")
-          .text(el)
-          .attr(
-            "href",
-            $(this).siblings(".description").children().attr("href")
-          )
-          .attr("target", "_blank")
-      )
+      $("<li>")
+        .addClass("list")
+        .append(
+          $("<a>")
+            .text(el)
+            .attr(
+              "href",
+              $(this).siblings(".description").children().attr("href")
+            )
+            .attr("target", "_blank")
+        )
+        .append($("<button>").text("-").addClass("btn delete"))
     );
   });
 });
 
 $(`.saveBtn`).on("click", function () {
-  favoriteParks = {};
   var parkName = $(this).siblings(".parkName").text();
   favoriteParks[parkName] = "";
-  localStorage.setItem("favoriteParks", JSON.stringify(favoriteParks));
-  // favoriteParks = {};
-  let user = JSON.parse(localStorage.getItem("favoriteParks"));
-  Object.keys(user).forEach((el) => {
-    $("#dropdown1").append(
-      $("<li>").append(
+  $("#dropdown1").append(
+    $("<li>")
+      .addClass("list")
+      .append(
         $("<a>")
-          .text(el)
+          .text(parkName)
           .attr(
             "href",
             $(this).siblings(".description").children().attr("href")
           )
           .attr("target", "_blank")
+          .append($("<button>").text("-").addClass("btn delete"))
       )
-    );
-  });
+  );
+  localStorage.setItem("favoriteParks", JSON.stringify(favoriteParks));
 });
+
+// $(".delete").each((el) => {
+//   el.addEventListener("click", (e) => {
+//     console.log(e.target);
+//   });
+// });
+
+let deleteParks = document.querySelectorAll("#dropdown1 .delete");
