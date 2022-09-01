@@ -293,4 +293,4 @@ $(`.saveBtn`).on("click", function () {
 //   });
 // });
 
-let deleteParks = document.querySelectorAll("#dropdown1 .delete");
+$("#dropdown1").on("click", ".delete", (e) => {});
