@@ -455,3 +455,27 @@ a {
   padding-top: 470px;
   font-size: 25px;
 }
+
+.logos {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+marquee span {
+  margin: 5px 5px;
+}
+
+#statement {
+  text-decoration: underline;
+  color: red;
+}
+
+#university {
+  font-weight: bold;
+  color: blue;
+}
+
+.mentorName {
+  font-weight: bold;
+}
