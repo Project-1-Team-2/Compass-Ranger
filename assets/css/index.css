@@ -345,7 +345,7 @@ a {
 #contact__container {
   position: absolute;
   width: 100%;
-
+  height: 693px;
   opacity: 0.45;
 }
 
@@ -355,7 +355,7 @@ a {
 
 .develop__container {
   margin-left: 50px;
-  margin-top: 370px;
+  margin-top: 150px;
   height: 283px;
   width: 90%;
   position: absolute;
@@ -365,8 +365,13 @@ a {
 
 #develop__name {
   border-radius: 10%;
+  transition: 0.3s;
 }
 
+#develop__name:hover {
+  transform: scale(1.1);
+  transition-duration: 0.3s;
+}
 .contact__icons {
   width: 40px;
 }
@@ -374,93 +379,22 @@ a {
 .icons__container {
   display: flex;
   justify-content: space-around;
+  padding-top: 17px;
 }
 
-.tooltip1__1:hover::after {
-  content: "ray.kurbanov@gmail.com";
-  position: absolute;
-  font-weight: bold;
-  font-size: 22px;
-  left: 3.5em;
-  bottom: 0.8em;
-  color: black;
-}
-
-.tooltip1__2:hover::after {
-  content: "github profile";
-  position: absolute;
-  font-weight: bold;
-  font-size: 22px;
-  left: 6.2em;
-  bottom: 0.8em;
-  color: black;
-}
-
-.tooltip1__3:hover::after {
-  content: "linkedin profile";
-  position: absolute;
-  font-weight: bold;
-  font-size: 22px;
-  left: 6.2em;
-  bottom: 0.8em;
-  color: black;
-}
-
-.tooltip2__1:hover::after {
-  content: "timothy.signore@gmail.com";
-  position: absolute;
-  font-weight: bold;
-  font-size: 22px;
-  left: 23em;
-  bottom: 0.8em;
-  color: black;
-}
-
-.tooltip2__2:hover::after {
-  content: "github profile";
-  position: absolute;
-  font-weight: bold;
-  font-size: 22px;
-  left: 26em;
-  bottom: 0.8em;
-  color: black;
-}
-
-.tooltip2__3:hover::after {
-  content: "linkedin profile";
-  position: absolute;
-  font-weight: bold;
-  font-size: 22px;
-  left: 25.7em;
-  bottom: 0.8em;
-  color: black;
-}
-
-.tooltip3__1 img,
-.tooltip3__1 img,
-.tooltip3__1 img:hover {
+.tooltip img:hover {
   transition: 0.3s all ease-in-out;
   transform: translate(5px, -5px);
 }
 
-.tooltip3__2:hover {
+.tooltip:hover {
   transition: all 0.3s ease-in-out;
-}
-
-.tooltip3__3:hover::after {
-  content: "linkedin profile";
-  position: absolute;
-  font-weight: bold;
-  font-size: 22px;
-  right: 6.6em;
-  bottom: 0.8em;
-  color: black;
 }
 
 .develop__wish {
   display: flex;
   width: 600px;
-  margin: 70px auto;
+  margin: 40px auto;
 }
 
 .develop__text {
@@ -514,4 +448,10 @@ a {
 
 .extension__btn:hover {
   background-color: rgb(4, 88, 23);
+}
+
+/* ticker-----> */
+.ticker {
+  padding-top: 470px;
+  font-size: 25px;
 }
