@@ -91,7 +91,7 @@ svg g path:hover {
   background-color: darkgreen;
 }
 
-.page-footer {
+c .page-footer {
   display: flex;
   height: 6vh;
   background-color: darkgreen;
@@ -101,6 +101,12 @@ svg g path:hover {
   margin-left: 1.5em;
   font-family: "Noto Serif HK", serif;
 }
+
+/* .nav-wrapper img {
+  max-width: 10%;
+  max-height: 100%;
+
+} */
 
 .card {
   margin-right: 2em;
@@ -342,7 +348,7 @@ a {
 #contact__container {
   position: absolute;
   width: 100%;
-  height: 550px;
+
   opacity: 0.45;
 }
 
@@ -352,7 +358,7 @@ a {
 
 .develop__container {
   margin-left: 50px;
-  margin-top: 250px;
+  margin-top: 370px;
   height: 283px;
   width: 90%;
   position: absolute;
@@ -378,7 +384,7 @@ a {
   position: absolute;
   font-weight: bold;
   font-size: 22px;
-  left: 2.7em;
+  left: 3.5em;
   bottom: 0.8em;
   color: black;
 }
@@ -388,7 +394,7 @@ a {
   position: absolute;
   font-weight: bold;
   font-size: 22px;
-  left: 4.7em;
+  left: 6.2em;
   bottom: 0.8em;
   color: black;
 }
@@ -398,7 +404,7 @@ a {
   position: absolute;
   font-weight: bold;
   font-size: 22px;
-  left: 4.4em;
+  left: 6.2em;
   bottom: 0.8em;
   color: black;
 }
@@ -408,7 +414,7 @@ a {
   position: absolute;
   font-weight: bold;
   font-size: 22px;
-  left: 18em;
+  left: 23em;
   bottom: 0.8em;
   color: black;
 }
@@ -418,7 +424,7 @@ a {
   position: absolute;
   font-weight: bold;
   font-size: 22px;
-  left: 20.8em;
+  left: 26em;
   bottom: 0.8em;
   color: black;
 }
@@ -428,7 +434,7 @@ a {
   position: absolute;
   font-weight: bold;
   font-size: 22px;
-  left: 20.3em;
+  left: 25.7em;
   bottom: 0.8em;
   color: black;
 }
@@ -438,7 +444,7 @@ a {
   position: absolute;
   font-weight: bold;
   font-size: 22px;
-  right: 2.3em;
+  right: 3.5em;
   bottom: 0.8em;
   color: black;
 }
@@ -448,7 +454,7 @@ a {
   position: absolute;
   font-weight: bold;
   font-size: 22px;
-  right: 4.8em;
+  right: 6.8em;
   bottom: 0.8em;
   color: black;
 }
@@ -458,7 +464,7 @@ a {
   position: absolute;
   font-weight: bold;
   font-size: 22px;
-  right: 4.6em;
+  right: 6.6em;
   bottom: 0.8em;
   color: black;
 }
@@ -470,11 +476,14 @@ a {
 }
 
 .develop__text {
+  font-size: 30px;
   color: black;
+  font-weight: 500;
 }
 
 .extension__btn {
   margin: 10px;
+  color: white;
 }
 
 .navStateText {
@@ -500,11 +509,14 @@ a {
   padding: 5px auto !important;
   width: 300px !important;
 
-  left: 80% !important;
+  right: 20px !important;
   top: 100% !important;
   height: auto !important;
 }
 
 #dropdown1 a {
   width: 150px;
+}
+#dropdown1.dropdown-content__contacts {
+  top: 68px !important;
 }
