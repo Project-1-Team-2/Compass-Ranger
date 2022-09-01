@@ -151,7 +151,6 @@ function getParks() {
           .attr("data-name", data.data[i].name);
         $(`#${i} .description`)
           .text(`${data.data[i].description}`)
-          .append($("<br>"))
           .append(
             $("<a>")
               .attr("href", data.data[i].url)
@@ -239,27 +238,18 @@ getGeolocation();
 getIssLocation();
 
 // setting button to add to favorites/ locale storage //
+
 $(document).ready(function () {
   $(".fixed-action-btn").floatingActionButton();
-});
-
-$(".dropdown-trigger").dropdown();
-
-const favoriteParks = {};
-$(document).ready(function () {
-  let savedParks = JSON.parse(localStorage.getItem("favoriteParks"));
-  Object.keys(savedParks).forEach((el) => {
+  $(".dropdown-trigger").dropdown();
+  favoriteParks = JSON.parse(localStorage.getItem("favoriteParks"));
+  let hrefs = Object.values(favoriteParks);
+  Object.keys(favoriteParks).forEach((el, index) => {
     $("#dropdown1").append(
       $("<li>")
         .addClass("list")
         .append(
-          $("<a>")
-            .text(el)
-            .attr(
-              "href",
-              $(this).siblings(".description").children().attr("href")
-            )
-            .attr("target", "_blank")
+          $("<a>").text(el).attr("href", hrefs[index]).attr("target", "_blank")
         )
         .append(
           $("<button>").text("-").attr("data-name", el).addClass("btn delete")
@@ -290,13 +280,12 @@ $(`.saveBtn`).on("click", function () {
         .append($("<button>").text("-").addClass("btn delete"))
     );
   }
-
   localStorage.setItem("favoriteParks", JSON.stringify(favoriteParks));
 });
 
 $("#dropdown1").on("click", ".delete", (e) => {
   $(e.target).parent().remove();
   delete favoriteParks[$(e.target).siblings().text()];
-  localStorage.clear();
+  localStorage.removeItem(favoriteParks);
   localStorage.setItem("favoriteParks", JSON.stringify(favoriteParks));
 });
