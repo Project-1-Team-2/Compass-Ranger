@@ -303,6 +303,15 @@ nav img {
   font-family: "Oleo Script Swash Caps", cursive;
 }
 
+.stateNames {
+  font-family: "Oleo Script Swash Caps", cursive;
+  font-size: 18px;
+  color: rgba(4, 4, 4, 0.6);
+  margin: auto;
+  /* padding: 1em; */
+
+}
+
 .saveBtn {
   display: inline-block;
 }
@@ -320,23 +329,28 @@ nav img {
   background-color: darkgreen;
   padding: 0 30px;
 }
+
 a {
   color: white;
   text-decoration: none;
 }
+
 .brand__logo {
   font-size: 35px;
   color: white;
 }
+
 #contact__container {
   position: absolute;
   width: 100%;
   height: 550px;
   opacity: 0.45;
 }
+
 .contact__container {
   display: flex;
 }
+
 .develop__container {
   margin-left: 50px;
   margin-top: 250px;
@@ -346,16 +360,20 @@ a {
   display: flex;
   justify-content: space-around;
 }
+
 #develop__name {
   border-radius: 10%;
 }
+
 .contact__icons {
   width: 40px;
 }
+
 .icons__container {
   display: flex;
   justify-content: space-around;
 }
+
 .tooltip1__1:hover::after {
   content: "ray.kurbanov@gmail.com";
   position: absolute;
@@ -365,6 +383,7 @@ a {
   bottom: 0.8em;
   color: black;
 }
+
 .tooltip1__2:hover::after {
   content: "github profile";
   position: absolute;
@@ -384,6 +403,7 @@ a {
   bottom: 0.8em;
   color: black;
 }
+
 .tooltip2__1:hover::after {
   content: "timothy.signore@gmail.com";
   position: absolute;
@@ -393,6 +413,7 @@ a {
   bottom: 0.8em;
   color: black;
 }
+
 .tooltip2__2:hover::after {
   content: "github profile";
   position: absolute;
@@ -402,6 +423,7 @@ a {
   bottom: 0.8em;
   color: black;
 }
+
 .tooltip2__3:hover::after {
   content: "linkedin profile";
   position: absolute;
@@ -411,6 +433,7 @@ a {
   bottom: 0.8em;
   color: black;
 }
+
 .tooltip3__1:hover::after {
   content: "mingadag204@gmail.com";
   position: absolute;
@@ -420,6 +443,7 @@ a {
   bottom: 0.8em;
   color: black;
 }
+
 .tooltip3__2:hover::after {
   content: "github profile";
   position: absolute;
@@ -429,6 +453,7 @@ a {
   bottom: 0.8em;
   color: black;
 }
+
 .tooltip3__3:hover::after {
   content: "linkedin profile";
   position: absolute;
@@ -438,14 +463,24 @@ a {
   bottom: 0.8em;
   color: black;
 }
+
 .develop__wish {
   display: flex;
   width: 600px;
   margin: 70px auto;
 }
+
 .develop__text {
   color: black;
 }
+
 .extension__btn {
   margin: 10px;
+}
+
+.navStateText {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+
 }

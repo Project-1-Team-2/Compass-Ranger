@@ -107,7 +107,7 @@ function isISSnearBy() {
   let radiusLimitDeg = 250 / 69;
   let currentRadius = Math.sqrt(
     parseFloat(locationData.issLat - locationData.currentLat) ** 2 +
-      parseFloat((locationData.issLong - locationData.currentLong) ** 2)
+    parseFloat((locationData.issLong - locationData.currentLong) ** 2)
   );
 
   if (currentRadius <= radiusLimitDeg && !confirmed) {
@@ -143,7 +143,8 @@ function getParks() {
         images[i].push(data.data[i].images[3].url);
         // images[i].push(data.data[i].images[4].url);
         $(`#${i}`).removeClass(`hidden`);
-        $(`#${i} h3`).text(`${data.data[i].fullName}, ${data.data[i].states}`);
+        $(`#${i} h3`).text(`${data.data[i].fullName}`);
+        $(`#${i} h4`).text(`${data.data[i].states}`);
         $(`#${i} h3`)
           .attr("data-lat", data.data[i].latitude)
           .attr("data-long", data.data[i].longitude)
