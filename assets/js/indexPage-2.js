@@ -311,12 +311,6 @@ $(`.saveBtn`).on("click", function () {
   localStorage.setItem("favoriteParks", JSON.stringify(favoriteParks));
 });
 
-// $(".delete").each((el) => {
-//   el.addEventListener("click", (e) => {
-//     console.log(e.target);
-//   });
-// });
-
 $("#dropdown1").on("click", ".delete", (e) => {
   $(e.target).parent().remove();
   delete favoriteParks[$(e.target).siblings().text()];
