@@ -150,14 +150,6 @@ c .page-footer {
   width: 95%;
 }
 
-.parkName {
-  display: inline-block;
-  margin-top: 5px;
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 12px;
-}
-
 .description {
   font-size: 12px;
   margin-bottom: 10px;
@@ -309,6 +301,11 @@ nav img {
   font-family: "Oleo Script Swash Caps", cursive;
 }
 
+.parkName:hover {
+  color: black;
+  cursor: pointer;
+}
+
 .stateNames {
   font-family: "Oleo Script Swash Caps", cursive;
   font-size: 18px;
@@ -439,24 +436,15 @@ a {
   color: black;
 }
 
-.tooltip3__1:hover::after {
-  content: "mingadag204@gmail.com";
-  position: absolute;
-  font-weight: bold;
-  font-size: 22px;
-  right: 3.5em;
-  bottom: 0.8em;
-  color: black;
+.tooltip3__1 img,
+.tooltip3__1 img,
+.tooltip3__1 img:hover {
+  transition: 0.3s all ease-in-out;
+  transform: translate(5px, -5px);
 }
 
-.tooltip3__2:hover::after {
-  content: "github profile";
-  position: absolute;
-  font-weight: bold;
-  font-size: 22px;
-  right: 6.8em;
-  bottom: 0.8em;
-  color: black;
+.tooltip3__2:hover {
+  transition: all 0.3s ease-in-out;
 }
 
 .tooltip3__3:hover::after {
@@ -508,8 +496,7 @@ a {
   flex-direction: column !important;
   padding: 5px auto !important;
   width: 300px !important;
-
-  right: 20px !important;
+  left: 80vw !important;
   top: 100% !important;
   height: auto !important;
 }
@@ -519,4 +506,12 @@ a {
 }
 #dropdown1.dropdown-content__contacts {
   top: 68px !important;
+}
+.active {
+  background-color: rgb(4, 88, 23) !important;
+  padding: 25px 20px;
+}
+
+.extension__btn:hover {
+  background-color: rgb(4, 88, 23);
 }

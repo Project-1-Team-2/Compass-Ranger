@@ -151,6 +151,7 @@ function getParks() {
           .attr("data-name", data.data[i].name);
         $(`#${i} .description`)
           .text(`${data.data[i].description}`)
+          .append($("<br>"))
           .append(
             $("<a>")
               .attr("href", data.data[i].url)
@@ -248,7 +249,6 @@ const favoriteParks = {};
 $(document).ready(function () {
   let savedParks = JSON.parse(localStorage.getItem("favoriteParks"));
   Object.keys(savedParks).forEach((el) => {
-    favoriteParks[el] = "";
     $("#dropdown1").append(
       $("<li>")
         .addClass("list")
@@ -266,52 +266,37 @@ $(document).ready(function () {
         )
     );
   });
-  const deleteBtns = document.querySelectorAll(".btn.delete");
-  deleteBtns.forEach((el) => {
-    el.addEventListener("click", (e) => {
-      const toDelete = e.target.dataset.name;
-      delete savedParks[toDelete];
-      console.log(savedParks);
-      localStorage.setItem("favoriteParks", JSON.stringify(savedParks));
-      window.location.reload();
-    });
-  });
 });
 
 $(`.saveBtn`).on("click", function () {
   var parkName = $(this).siblings(".parkName").text();
-  favoriteParks[parkName] = "";
-  $("#dropdown1").append(
-    $("<li>")
-      .addClass("list")
-      .append(
-        $("<a>")
-          .text(parkName)
-          .attr(
-            "href",
-            $(this).siblings(".description").children().attr("href")
-          )
-          .attr("target", "_blank")
-      )
-      .append(
-        $("<button>")
-          .text("-")
-          .attr("data-name", parkName)
-          .addClass("btn delete")
-          .on("click", (e) => {
-            const toDelete = e.target.dataset.name;
-            let savedParks = JSON.parse(localStorage.getItem("favoriteParks"));
-            delete savedParks[toDelete];
-            console.log(savedParks);
-            localStorage.setItem("favoriteParks", JSON.stringify(savedParks));
-            window.location.reload();
-          })
-      )
-  );
+  if (favoriteParks[parkName] == undefined) {
+    favoriteParks[parkName] = $(this)
+      .siblings(".description")
+      .children()
+      .attr("href");
+    $("#dropdown1").append(
+      $("<li>")
+        .addClass("list")
+        .append(
+          $("<a>")
+            .text(parkName)
+            .attr(
+              "href",
+              $(this).siblings(".description").children().attr("href")
+            )
+            .attr("target", "_blank")
+        )
+        .append($("<button>").text("-").addClass("btn delete"))
+    );
+  }
+
   localStorage.setItem("favoriteParks", JSON.stringify(favoriteParks));
 });
 
 $("#dropdown1").on("click", ".delete", (e) => {
   $(e.target).parent().remove();
   delete favoriteParks[$(e.target).siblings().text()];
+  localStorage.clear();
+  localStorage.setItem("favoriteParks", JSON.stringify(favoriteParks));
 });

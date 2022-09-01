@@ -13,18 +13,25 @@
 
   </head>
   <body>
-    <div class="nav__wrapper">
-      <p  class="brand__logo">Compass Ranger</p>
-      <div class="buttons__extention">
-      <a href="./indexPage-1.html" class="extension__btn">Home</a>
-      <a href="./indexPage-3.html" class="extension__btn">Contacts</a>
-      <a class='dropdown-trigger btn green darken-3' href='#' data-target='dropdown1'
-      class="favorites">Favorites</a>
-
-    <!-- Dropdown Structure -->
-    <ul id='dropdown1' class='dropdown-content dropdown-content__contacts'>
-    </ul>
-    </div>
+    <div class="navbar-fixed">
+      <nav class="">
+        <div class="nav-wrapper">
+          <a href="./indexPage-1.html" class="brand-logo">Compass Ranger</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="./indexPage-1.html">Select State</a></li>
+            <li><a href="./indexPage-3.html">Contacts</a></li>
+  
+            <!-- Dropdown Trigger -->
+            <a class='dropdown-trigger btn green darken-3' href='#' data-target='dropdown1'
+              class="favorites">Favorites</a>
+  
+            <!-- Dropdown Structure -->
+            <ul id='dropdown1' class='dropdown-content'>
+            </ul>
+          
+          </ul>
+        </div>
+      </nav>
     </div>
     
     <div class="contact__container">
