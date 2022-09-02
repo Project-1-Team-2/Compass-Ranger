@@ -116,6 +116,6 @@ if (!JSON.parse(localStorage.getItem("favoriteParks"))) {
 paths.forEach((el) => {
   el.addEventListener("click", (e) => {
     let state = states[e.path[0].id];
-    document.location.assign(`./indexPage-2.js${state}`);
+    document.location.assign(`./indexPage-2.js?${state}`);
   });
 });
